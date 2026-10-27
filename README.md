@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Prototype Profiling Penyedia SPSE
 
 Prototype ini adalah situs statis. Seluruh tampilan, CSS, data simulasi, dan interaksi berada di dalam `index.html` sehingga tidak membutuhkan proses build atau backend.
@@ -39,3 +40,7 @@ https://USERNAME.github.io/prototype-profiling-penyedia/
 ```
 
 Semua data pada prototype merupakan data simulasi. Pastikan tidak menambahkan data asli, rahasia, token, password, atau identifier sensitif sebelum repository dibuat public.
+=======
+# prototype-profiling-penyedia-spse
+Prototype untuk fitur Profiling Penyedia pada fitur SPSE (e-procurement)
+>>>>>>> f10ba5be16442bb555d5328f9598ebc7370759c7
