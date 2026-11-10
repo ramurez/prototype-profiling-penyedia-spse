@@ -3,346 +3,281 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Prototype Profiling Penyedia SPSE dan VMS</title>
+        <title>Prototype Dokumen Kualifikasi + Profiling Penyedia</title>
         <style>
             :root {
-                --red: #d92d50;
-                --red-dark: #b42342;
-                --navy: #344054;
-                --ink: #1d2939;
+                --red: #e12b4b;
+                --ink: #1f2937;
                 --muted: #667085;
-                --line: #e4e7ec;
-                --soft: #f6f7f9;
+                --line: #e6e8ec;
                 --blue: #315fd4;
-                --green: #087a53;
-                --green-bg: #ecfdf3;
-                --amber: #b25e09;
-                --amber-bg: #fff7e8;
-                --danger: #b42318;
-                --danger-bg: #fff1f0;
-                --white: #fff;
-                --shadow: 0 1px 3px rgba(16, 24, 40, 0.08);
-                --radius: 9px;
+                --amber: #a15c08;
+                --amberbg: #fff7e8;
+                --green: #0a7a55;
+                --greenbg: #ecfdf3;
             }
             * {
                 box-sizing: border-box;
             }
-            html {
-                scroll-behavior: smooth;
-            }
             body {
                 margin: 0;
                 font:
-                    14px/1.45 Inter,
+                    12px/1.45 Inter,
                     ui-sans-serif,
                     -apple-system,
                     BlinkMacSystemFont,
                     "Segoe UI",
                     sans-serif;
                 color: var(--ink);
-                background: #f7f8fa;
+                background: #f6f7f9;
             }
-            button,
-            input,
-            select {
+            button {
                 font: inherit;
-            }
-            button,
-            a {
                 cursor: pointer;
-            }
-            a {
-                text-decoration: none;
-                color: inherit;
             }
             .hidden {
                 display: none !important;
             }
-            .prototype-bar {
-                min-height: 38px;
-                padding: 7px 22px;
-                display: flex;
-                gap: 12px;
-                align-items: center;
-                justify-content: space-between;
-                background: #fff5cc;
-                border-bottom: 1px solid #ecd66c;
-                color: #684f00;
-                font-size: 12px;
+            .proto {
                 position: sticky;
                 top: 0;
-                z-index: 50;
+                z-index: 99;
+                background: #fff7cc;
+                border-bottom: 1px solid #ead36d;
+                padding: 7px 16px;
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                align-items: center;
+                color: #6b5600;
+                font-size: 11px;
             }
-            .prototype-nav {
+            .proto .nav {
                 display: flex;
                 gap: 6px;
                 flex-wrap: wrap;
             }
-            .proto-btn {
-                border: 1px solid #d6bb55;
-                background: #fffdf4;
+            .pbtn {
+                border: 1px solid #d8bf54;
+                background: #fffdf5;
                 border-radius: 6px;
-                padding: 5px 9px;
+                padding: 5px 8px;
                 font-weight: 700;
-                color: #684f00;
+                color: #6b5600;
             }
-            .proto-btn.active {
-                background: #684f00;
+            .pbtn.active {
+                background: #6b5600;
                 color: #fff;
-                border-color: #684f00;
             }
-            .spse-header {
-                height: 74px;
+            .topline {
+                height: 28px;
+                background: #f1f3f6;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            .inner,
+            .shell {
+                max-width: 1280px;
+                margin: auto;
+            }
+            .topline .inner {
+                height: 28px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 22px;
+                color: #737b88;
+                font-size: 10px;
+            }
+            .header {
+                height: 72px;
                 background: #fff;
                 border-bottom: 1px solid var(--line);
+            }
+            .header .inner {
+                height: 100%;
                 display: flex;
-                align-items: center;
                 justify-content: space-between;
-                padding: 0 34px;
-            }
-            .header-left,
-            .brand,
-            .user {
-                display: flex;
                 align-items: center;
-            }
-            .header-left {
-                gap: 40px;
+                padding: 0 22px;
             }
             .brand {
+                display: flex;
                 gap: 10px;
+                align-items: center;
             }
-            .logo-box {
-                width: 39px;
-                height: 39px;
-                border-radius: 10px;
+            .logo {
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
                 background: var(--red);
                 color: #fff;
                 display: grid;
                 place-items: center;
-                font-size: 22px;
                 font-weight: 900;
             }
-            .brand-title {
-                font-size: 20px;
-                line-height: 1;
-                font-weight: 900;
-                letter-spacing: -0.4px;
+            .brand b {
+                font-size: 15px;
             }
-            .brand-title span {
+            .brand span {
                 color: var(--red);
             }
-            .brand-sub {
-                font-size: 11px;
-                color: #8b94a3;
-                font-weight: 650;
-                margin-top: 3px;
-            }
-            .spse-nav {
+            .header-left {
                 display: flex;
-                gap: 34px;
-                height: 74px;
                 align-items: center;
             }
-            .spse-nav a {
-                height: 74px;
+            .mainnav {
+                display: flex;
+                gap: 24px;
+                margin-left: 34px;
+            }
+            .mainnav a {
+                height: 72px;
                 display: flex;
                 align-items: center;
                 font-weight: 700;
-                color: #475467;
-                border-bottom: 4px solid transparent;
+                color: #505968;
+                border-bottom: 3px solid transparent;
             }
-            .spse-nav a.active {
-                color: var(--red);
+            .mainnav a.active {
                 border-color: var(--red);
+                color: #111827;
             }
             .user {
-                gap: 10px;
+                display: flex;
+                align-items: center;
+                gap: 9px;
             }
             .avatar {
-                width: 38px;
-                height: 38px;
+                width: 32px;
+                height: 32px;
                 border-radius: 50%;
-                background: #e5e7eb;
+                background: #e8eaee;
                 display: grid;
                 place-items: center;
                 font-weight: 800;
             }
-            .user strong,
             .user small {
                 display: block;
+                color: #8a93a2;
+                font-size: 9px;
             }
-            .user small {
-                font-size: 11px;
-                color: var(--muted);
-            }
-            .spse-shell {
-                max-width: 1440px;
-                margin: auto;
-                padding: 22px 34px 64px;
+            .shell {
+                padding: 24px 22px 60px;
             }
             .breadcrumb {
-                font-size: 12px;
-                color: var(--blue);
-                margin: 4px 0 20px;
+                color: #4d67c9;
+                font-size: 10px;
+                margin-bottom: 14px;
             }
-            .breadcrumb span {
-                color: #98a2b3;
-                margin: 0 7px;
-            }
-            .page-title-row {
-                display: flex;
-                justify-content: space-between;
-                gap: 20px;
-                align-items: flex-start;
-                margin-bottom: 18px;
-            }
-            .page-title-row h1 {
-                margin: 0 0 5px;
-                font-size: 25px;
-            }
-            .page-title-row p {
-                margin: 0;
-                color: var(--muted);
-            }
-            .card {
-                background: #fff;
-                border: 1px solid var(--line);
-                border-radius: var(--radius);
-                box-shadow: var(--shadow);
-                margin-bottom: 16px;
-            }
-            .card-head {
-                padding: 16px 18px;
-                border-bottom: 1px solid var(--line);
+            .title-row {
                 display: flex;
                 justify-content: space-between;
                 gap: 16px;
-                align-items: center;
+                align-items: flex-start;
+                margin-bottom: 14px;
             }
-            .card-head h2 {
-                font-size: 17px;
+            .title-row h1 {
+                font-size: 18px;
+                margin: 0 0 3px;
+            }
+            .title-row p {
                 margin: 0;
-            }
-            .card-head p {
-                margin: 3px 0 0;
                 color: var(--muted);
-                font-size: 12px;
             }
-            .card-body {
-                padding: 18px;
+            .actions {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                flex-wrap: wrap;
             }
             .btn {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                gap: 7px;
+                padding: 7px 10px;
                 border: 1px solid #d0d5dd;
                 background: #fff;
+                border-radius: 6px;
                 color: #344054;
-                border-radius: 7px;
-                padding: 9px 13px;
-                font-weight: 750;
-                font-size: 12px;
-            }
-            .btn:hover {
-                background: #f9fafb;
+                font-weight: 700;
+                font-size: 10px;
             }
             .btn.primary {
                 background: var(--red);
                 border-color: var(--red);
                 color: #fff;
             }
-            .btn.primary:hover {
-                background: var(--red-dark);
+            .notice {
+                background: #f4f7ff;
+                border: 1px solid #cad6f8;
+                border-radius: 7px;
+                padding: 10px 12px;
+                color: #42557a;
+                margin-bottom: 14px;
             }
-            .btn.link {
-                border-color: transparent;
-                color: var(--blue);
-                padding-left: 4px;
-                padding-right: 4px;
+            .notice strong {
+                display: block;
+                margin-bottom: 3px;
             }
-            .btn.small {
-                padding: 6px 9px;
-                font-size: 11px;
+            .notice.lock {
+                background: #f8fafc;
+                border-style: dashed;
+                border-color: #cbd5e1;
+                color: #64748b;
             }
-            .btn:disabled {
-                opacity: 0.45;
-                cursor: not-allowed;
-            }
-            .actions {
-                display: flex;
-                gap: 8px;
-                flex-wrap: wrap;
-            }
-            .badge {
-                display: inline-flex;
-                padding: 4px 8px;
-                border-radius: 999px;
-                font-size: 11px;
-                font-weight: 750;
+            .card {
+                background: #fff;
                 border: 1px solid var(--line);
-                background: #f9fafb;
+                border-radius: 7px;
+                margin-bottom: 12px;
+                overflow: hidden;
             }
-            .badge.green {
-                color: var(--green);
-                background: var(--green-bg);
-                border-color: #b7e5d2;
-            }
-            .badge.amber {
-                color: var(--amber);
-                background: var(--amber-bg);
-                border-color: #f0d39e;
-            }
-            .badge.red {
-                color: var(--danger);
-                background: var(--danger-bg);
-                border-color: #f4b5ae;
-            }
-            .meta {
-                font-size: 11px;
-                color: var(--muted);
-            }
-            .tabs {
-                display: flex;
-                gap: 2px;
-                border-bottom: 1px solid var(--line);
-                overflow: auto;
-            }
-            .tab {
-                padding: 12px 15px;
-                font-weight: 750;
-                color: #667085;
-                border-bottom: 3px solid transparent;
-                white-space: nowrap;
-            }
-            .tab.active {
-                color: var(--red);
-                border-color: var(--red);
-            }
-            .selection-bar {
+            .card-head {
                 display: flex;
                 justify-content: space-between;
+                gap: 12px;
                 align-items: center;
-                gap: 14px;
-                flex-wrap: wrap;
-                background: #f1f5ff;
-                border: 1px solid #c9d6f7;
-                border-radius: 8px;
-                padding: 11px 13px;
-                margin-bottom: 12px;
+                padding: 12px 14px;
+                border-bottom: 1px solid var(--line);
             }
-            .selection-bar strong,
-            .selection-bar small {
-                display: block;
+            .card-head h2 {
+                font-size: 13px;
+                margin: 0;
             }
-            .selection-bar small {
+            .card-head p {
+                font-size: 10px;
                 color: var(--muted);
+                margin: 3px 0 0;
+            }
+            .card-body {
+                padding: 13px 14px;
+            }
+            .section-label {
+                padding: 9px 12px;
+                border-left: 3px solid var(--red);
+                background: #fff8fa;
+                margin: 18px 0 10px;
+                font-weight: 800;
+                color: #7a2537;
+            }
+            .field-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 14px 22px;
+            }
+            .field label {
+                display: block;
+                color: #7a8391;
+                font-size: 9px;
+                margin-bottom: 3px;
+            }
+            .field strong {
+                font-size: 11px;
             }
             .table-wrap {
                 overflow: auto;
                 border: 1px solid var(--line);
-                border-radius: 8px;
+                border-radius: 6px;
             }
             table {
                 width: 100%;
@@ -350,1030 +285,1175 @@
                 min-width: 900px;
             }
             th {
-                padding: 11px 12px;
+                background: #f7f8fa;
+                color: #4b5563;
+                font-size: 9px;
                 text-align: left;
-                background: #f1f3f6;
-                color: #344054;
-                font-size: 11px;
-                font-weight: 800;
+                padding: 8px 9px;
                 border-bottom: 1px solid var(--line);
                 white-space: nowrap;
             }
             td {
-                padding: 12px;
-                border-bottom: 1px solid #eaecf0;
+                padding: 9px;
+                border-bottom: 1px solid #edf0f3;
                 vertical-align: top;
-                font-size: 12px;
+                font-size: 10px;
             }
             tbody tr:last-child td {
                 border-bottom: 0;
-            }
-            tbody tr:nth-child(even) td {
-                background: #fafbfc;
             }
             .name {
                 font-weight: 800;
             }
             .sub {
-                font-size: 10px;
+                font-size: 9px;
                 color: var(--muted);
-                margin-top: 3px;
+                margin-top: 2px;
             }
-            .amount {
-                white-space: nowrap;
-            }
-            .check {
-                width: 16px;
-                height: 16px;
-                accent-color: var(--red);
-            }
-            .empty,
-            .error,
-            .notice {
-                padding: 16px;
-                border-radius: 8px;
-                font-size: 12px;
-            }
-            .empty {
-                background: #f8fafc;
-                border: 1px dashed #cbd5e1;
-                text-align: center;
-                color: #64748b;
-            }
-            .error {
-                background: var(--danger-bg);
-                border: 1px solid #f2b8b5;
-                color: #8f1d16;
-            }
-            .notice {
-                background: #eef4ff;
-                border: 1px solid #c8d7f8;
-                color: #344e7a;
-            }
-            .notice strong,
-            .error strong {
-                display: block;
-                margin-bottom: 3px;
-            }
-            .profile-name {
-                padding: 19px 20px;
-                display: flex;
-                justify-content: space-between;
-                gap: 16px;
-                align-items: center;
-            }
-            .profile-name h1 {
-                font-size: 24px;
-                margin: 2px 0 4px;
-            }
-            .source-grid {
-                display: grid;
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-                gap: 12px;
-            }
-            .source-card {
-                border: 1px solid var(--line);
-                border-radius: 8px;
-                padding: 15px;
-                background: #fff;
-                display: flex;
-                flex-direction: column;
-                min-height: 152px;
-            }
-            .source-card .icon {
-                width: 34px;
-                height: 34px;
-                border-radius: 8px;
-                background: #fff0f3;
-                color: var(--red);
-                display: grid;
-                place-items: center;
-                font-weight: 900;
-                margin-bottom: 11px;
-            }
-            .source-card h3 {
-                font-size: 14px;
-                margin: 0 0 5px;
-            }
-            .source-card p {
-                font-size: 11px;
-                color: var(--muted);
-                margin: 0 0 13px;
-                flex: 1;
-            }
-            .section-nav {
-                display: flex;
-                gap: 5px;
-                overflow: auto;
-                padding: 9px;
-                background: #fff;
-                border: 1px solid var(--line);
-                border-radius: 8px;
-                margin-bottom: 16px;
-                position: sticky;
-                top: 48px;
-                z-index: 20;
-            }
-            .section-nav a {
-                padding: 7px 10px;
-                border-radius: 6px;
-                font-size: 12px;
+            .badge {
+                display: inline-flex;
+                padding: 3px 6px;
+                border-radius: 999px;
+                font-size: 9px;
                 font-weight: 750;
-                color: #475467;
-                white-space: nowrap;
+                border: 1px solid var(--line);
+                background: #f8fafc;
             }
-            .section-nav a:hover {
-                background: #f2f4f7;
+            .badge.amber {
+                color: var(--amber);
+                background: var(--amberbg);
+                border-color: #efd39e;
             }
-            .disclaimer {
-                font-size: 11px;
-                color: #667085;
-                margin-top: 8px;
+            .badge.green {
+                color: var(--green);
+                background: var(--greenbg);
+                border-color: #bde7d5;
             }
-            .field-grid {
+            .profile-only {
+                border-left: 3px solid #7b61d1;
+            }
+            .profile-only .card-head {
+                background: #fbfaff;
+            }
+            .profile-note {
+                font-size: 9px;
+                color: #6c63a8;
+                font-weight: 700;
+            }
+            .kpi-grid {
                 display: grid;
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-                gap: 17px;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
             }
-            .field label {
-                display: block;
-                color: #667085;
-                font-size: 10px;
-                margin-bottom: 3px;
+            .kpi {
+                border: 1px solid var(--line);
+                border-radius: 6px;
+                padding: 10px;
             }
-            .field strong {
-                font-size: 13px;
-            }
-            .bo-alert {
-                background: #fff8e8;
-                border: 1px solid #f2d493;
-                border-radius: 8px;
-                padding: 12px 14px;
-                margin-bottom: 12px;
-                color: #70460b;
-            }
-            .bo-alert strong {
-                display: block;
-            }
-            .bo-alert small {
-                color: #8a641e;
-            }
-            .inline-tools {
-                display: flex;
-                gap: 9px;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-            .input,
-            .select {
-                border: 1px solid #d0d5dd;
-                border-radius: 7px;
-                padding: 9px 11px;
-                background: #fff;
-                color: #344054;
-            }
-            .input {
-                min-width: 240px;
-            }
-            .pagination {
-                display: flex;
-                justify-content: space-between;
-                gap: 12px;
-                align-items: center;
-                margin-top: 11px;
+            .kpi .label {
                 color: var(--muted);
-                font-size: 11px;
+                font-size: 9px;
+            }
+            .kpi .value {
+                font-size: 19px;
+                font-weight: 900;
+                margin: 2px 0;
             }
             .compare-grid {
                 display: grid;
-                grid-template-columns: 190px repeat(3, minmax(245px, 1fr));
-                overflow: auto;
+                grid-template-columns: 170px repeat(3, minmax(240px, 1fr));
                 border: 1px solid var(--line);
-                border-radius: 8px;
+                border-radius: 6px;
+                overflow: auto;
             }
-            .compare-cell {
-                padding: 12px;
+            .cc {
+                padding: 9px;
                 border-right: 1px solid var(--line);
                 border-bottom: 1px solid var(--line);
-                font-size: 11px;
-                min-width: 0;
+                font-size: 10px;
             }
-            .compare-cell:nth-child(4n) {
-                border-right: 0;
-            }
-            .compare-label {
-                background: #f5f6f8;
+            .cc.label {
+                background: #f7f8fa;
                 font-weight: 800;
             }
-            .compare-provider {
-                background: #fff5f7;
+            .cc.head {
+                background: #fff7f9;
+                font-weight: 800;
             }
-            .compare-provider strong {
-                font-size: 13px;
-                display: block;
-            }
-            .compare-section {
+            .cs {
                 grid-column: 1/-1;
-                padding: 10px 12px;
                 background: #344054;
                 color: #fff;
-                font-size: 12px;
                 font-weight: 800;
+                padding: 8px 9px;
+                font-size: 10px;
             }
-            .experience-list {
+            .print-sheet {
+                max-width: 980px;
+                margin: 24px auto;
+                background: #fff;
+                padding: 26px 30px;
+                border: 1px solid var(--line);
+            }
+            .print-sheet h1 {
+                font-size: 18px;
+                margin: 0 0 6px;
+            }
+            .print-sheet h2 {
+                font-size: 12px;
+                margin: 18px 0 8px;
+            }
+            .print-meta {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px 20px;
+                margin: 14px 0;
+            }
+            .print-meta div {
+                font-size: 10px;
+            }
+            .print-meta b {
+                display: block;
+                color: #667085;
+                font-size: 9px;
+                margin-bottom: 2px;
+            }
+            @media print {
+                .proto,
+                .topline,
+                .header {
+                    display: none !important;
+                }
+                .print-sheet {
+                    border: 0;
+                    margin: 0;
+                    max-width: none;
+                    padding: 0;
+                }
+                .btn {
+                    display: none !important;
+                }
+            }
+
+            .match-alert {
+                display: flex;
+                gap: 10px;
+                align-items: flex-start;
+                border: 1px solid #ef4444;
+                background: #fff7f7;
+                color: #7f1d1d;
+                padding: 12px 14px;
+                border-radius: 6px;
+                margin-top: 12px;
+            }
+            .match-alert .icon {
+                flex: 0 0 auto;
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background: #ef4444;
+                color: #fff;
+                display: grid;
+                place-items: center;
+                font-weight: 900;
+            }
+            .match-alert ul {
+                margin: 0;
+                padding-left: 18px;
+            }
+            .profile-table td,
+            .profile-table th {
+                vertical-align: top;
+            }
+            .profile-table .address {
+                color: var(--muted);
+                font-size: 9px;
+                margin-top: 2px;
+                line-height: 1.35;
+            }
+
+            .compare-grid.five {
+                grid-template-columns: 170px repeat(5, minmax(220px, 1fr));
+            }
+            .compare-list {
                 display: grid;
                 gap: 7px;
             }
-            .experience-item {
+            .compare-item {
                 border: 1px solid var(--line);
                 border-radius: 6px;
                 padding: 8px;
                 background: #fff;
             }
-            .experience-item strong {
+            .compare-item strong {
                 display: block;
-                font-size: 11px;
+                font-size: 10px;
             }
-            .experience-item span {
+            .compare-item span {
                 display: block;
                 color: var(--muted);
-                font-size: 10px;
-                margin-top: 3px;
+                font-size: 9px;
+                margin-top: 2px;
             }
-            .more-exp.hidden {
+            .compare-hidden.hidden {
                 display: none;
             }
-            .compare-toolbar {
+            .expand-btn {
+                margin-top: 8px;
+            }
+
+            .selection-bar {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 gap: 12px;
+                padding: 10px 12px;
+                margin: 12px 0;
+                border: 1px solid #c8d7f8;
+                border-radius: 7px;
+                background: #eef4ff;
+            }
+            .selection-bar .left {
+                display: flex;
+                align-items: center;
+                gap: 10px;
                 flex-wrap: wrap;
-                margin-bottom: 12px;
             }
-            .vms-header {
-                height: 93px;
-                background: #fff;
-                border-bottom: 1px solid #e7e9ee;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 42px;
-            }
-            .vms-brand .brand-title {
-                font-size: 26px;
-            }
-            .vms-brand .brand-sub {
-                font-size: 13px;
-            }
-            .vms-user {
-                display: flex;
-                gap: 18px;
-                align-items: center;
-            }
-            .vms-user .avatar {
-                width: 50px;
-                height: 50px;
-            }
-            .vms-app {
-                display: grid;
-                grid-template-columns: 370px minmax(0, 1fr);
-                gap: 34px;
-                padding: 32px 30px 60px;
-                max-width: 1900px;
-                margin: auto;
-            }
-            .vms-sidebar {
-                background: #fff;
-                border: 1px solid var(--line);
-                border-radius: 9px;
-                min-height: 760px;
-                padding: 25px 0;
-            }
-            .side-title,
-            .side-item {
-                padding: 14px 34px;
-            }
-            .side-title {
-                font-size: 17px;
+            .selection-count {
                 font-weight: 800;
-                display: flex;
-                justify-content: space-between;
-            }
-            .side-item {
-                color: #7b8494;
-                font-size: 16px;
-            }
-            .side-item.group {
-                font-weight: 750;
                 color: #344054;
             }
-            .side-item.active {
-                border-left: 4px solid var(--red);
-                padding-left: 30px;
-                color: var(--red);
-                font-weight: 800;
-                background: #fffafb;
+            .compare-checkbox {
+                width: 16px;
+                height: 16px;
+                cursor: pointer;
             }
-            .vms-main h1 {
-                font-size: 30px;
-                margin: 0 0 34px;
+            .compare-checkbox:disabled {
+                cursor: not-allowed;
             }
-            .vms-tabs {
-                display: flex;
-                gap: 0;
-                border-bottom: 1px solid var(--line);
-                overflow: auto;
-                margin-bottom: 25px;
-            }
-            .vms-tab {
-                padding: 14px 18px;
-                color: #858e9d;
-                font-size: 16px;
-                white-space: nowrap;
-                border-bottom: 4px solid transparent;
-            }
-            .vms-tab.active {
-                color: #344054;
-                font-weight: 800;
-                border-color: var(--red);
-            }
-            .readonly {
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                padding: 7px 10px;
-                border-radius: 6px;
-                background: #f2f4f7;
-                color: #475467;
-                font-size: 11px;
-                font-weight: 750;
-            }
-            .vms-tools {
-                display: flex;
-                justify-content: space-between;
-                gap: 12px;
-                align-items: center;
-                flex-wrap: wrap;
-                margin-bottom: 24px;
-            }
-            .vms-tools .left {
-                display: flex;
-                gap: 12px;
-                flex-wrap: wrap;
-            }
-            .vms-tools .input,
-            .vms-tools .select {
-                height: 46px;
-                font-size: 13px;
-                min-width: 250px;
-            }
-            .vms-card {
-                background: #fff;
-                border: 1px solid var(--line);
-                border-radius: 9px;
-                padding: 23px 0;
-                box-shadow: var(--shadow);
-            }
-            .vms-card-title {
-                font-size: 17px;
-                font-weight: 800;
-                padding: 0 28px 20px;
-            }
-            .vms-card .table-wrap {
-                border-radius: 0;
-                border-left: 0;
-                border-right: 0;
-            }
-            .vms-card table {
-                min-width: 1250px;
-            }
-            .vms-card th {
-                font-size: 12px;
-                padding: 13px 14px;
-            }
-            .vms-card td {
-                font-size: 12px;
-                padding: 14px;
-            }
-            .vms-card .pagination {
-                padding: 0 26px;
-            }
-            .identity-section {
-                padding: 0 27px 24px;
-            }
-            .identity-section + .identity-section {
-                border-top: 1px solid var(--line);
-                padding-top: 22px;
-            }
-            .identity-section h2 {
-                font-size: 17px;
-                margin: 0 0 17px;
-            }
-            .vms-info-grid {
-                display: grid;
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 22px 34px;
-            }
-            .vms-field label {
-                display: block;
-                color: #7b8494;
-                font-size: 11px;
-                margin-bottom: 5px;
-            }
-            .vms-field strong {
-                font-size: 13px;
-            }
-            .kbli-list {
-                display: grid;
-                gap: 8px;
-            }
-            .kbli-row {
-                display: grid;
-                grid-template-columns: 120px 1fr 140px;
-                gap: 14px;
-                padding: 11px 12px;
-                border: 1px solid var(--line);
-                border-radius: 7px;
-                font-size: 12px;
-            }
-            .kbli-row strong {
-                color: var(--red);
-            }
-            .rating-shell {
-                max-width: 1100px;
-                margin: 36px auto;
-                padding: 0 24px;
-            }
-            .rating-card {
-                background: #fff;
-                border: 1px solid var(--line);
-                border-radius: 10px;
-                padding: 28px;
-                box-shadow: var(--shadow);
-            }
-            .rating-card h1 {
-                margin: 0 0 8px;
-            }
-            .rating-value {
-                font-size: 48px;
-                font-weight: 900;
-                color: #315fd4;
-                margin: 18px 0 5px;
-            }
-            .rating-note {
-                padding: 11px 13px;
-                background: #f2f4f7;
-                border-radius: 7px;
-                color: #667085;
-                font-size: 12px;
-            }
-            @media (max-width: 1100px) {
-                .source-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-                .vms-app {
+            @media (max-width: 800px) {
+                .field-grid,
+                .kpi-grid {
                     grid-template-columns: 1fr;
                 }
-                .vms-sidebar {
+                .mainnav {
                     display: none;
                 }
-                .field-grid,
-                .vms-info-grid {
-                    grid-template-columns: repeat(2, 1fr);
+                .shell {
+                    padding: 18px 12px 50px;
                 }
-            }
-            @media (max-width: 900px) {
-                .vms-header {
-                    padding: 0 18px;
+                .title-row {
+                    flex-direction: column;
                 }
-                .vms-user {
-                    gap: 10px;
-                }
-                .vms-user > div:last-child {
-                    display: none;
-                }
-                .vms-main h1 {
-                    font-size: 26px;
-                    margin-bottom: 22px;
-                }
-            }
-            @media (max-width: 720px) {
-                .prototype-bar {
+                .proto {
                     position: static;
+                    flex-direction: column;
                     align-items: flex-start;
-                    flex-direction: column;
-                }
-                .spse-header,
-                .vms-header {
-                    padding: 0 16px;
-                }
-                .spse-nav {
-                    display: none;
-                }
-                .spse-shell {
-                    padding: 18px 14px 50px;
-                }
-                .page-title-row,
-                .profile-name {
-                    flex-direction: column;
-                }
-                .source-grid,
-                .field-grid,
-                .vms-info-grid {
-                    grid-template-columns: 1fr;
-                }
-                .vms-app {
-                    display: block;
-                    padding: 24px 14px;
-                }
-                .vms-header {
-                    height: 76px;
-                }
-                .vms-user > span {
-                    display: none;
-                }
-                .compare-grid {
-                    grid-template-columns: 150px repeat(3, 240px);
                 }
             }
         </style>
     </head>
     <body>
-        <div class="prototype-bar">
-            <div><strong>PROTOTYPE</strong> · Data simulasi · Profiling Penyedia SPSE + VMS</div>
-            <div class="prototype-nav">
-                <button class="proto-btn" data-go="pokja">Entry Pokja</button
-                ><button class="proto-btn" data-go="ppk">Entry PPK</button
-                ><button class="proto-btn" data-go="profile">Profiling</button
-                ><button class="proto-btn" data-go="compare">Perbandingan</button
-                ><button class="proto-btn" data-go="vms-identity">VMS Identitas</button
-                ><button class="proto-btn" data-go="vms-experience">VMS Pengalaman</button
-                ><button class="proto-btn" data-go="vms-running">VMS Berjalan</button>
+        <div class="proto">
+            <div><b>PROTOTYPE</b> · Dokumen Kualifikasi + Profiling Penyedia</div>
+            <div class="nav">
+                <button class="pbtn" data-s="pokja-eligible">Pokja · Eligible</button>
+                <button class="pbtn" data-s="pokja-before">Pokja · Sebelum Pembukaan</button>
+                <button class="pbtn" data-s="ppk-entry">Entry Point PPK</button>
+                <button class="pbtn" data-s="ppk-eligible">PPK · Penandatanganan Kontrak</button>
+                <button class="pbtn" data-s="ppk-before">PPK · Sebelum Penandatanganan</button>
+                <button class="pbtn" data-s="entry2">Entry Point · Detail Evaluasi</button>
+                <button class="pbtn" data-s="print">Cetak Dokumen</button>
+                <button class="pbtn" data-s="compare">Bandingkan Profiling</button>
             </div>
         </div>
-
-        <main id="app"></main>
-
-        <template id="spseHeader">
-            <header class="spse-header">
+        <div class="topline">
+            <div class="inner">
+                <span>Produk & Hukum · Pusat Bantuan · Pengumuman & Berita</span><span>ID · Bahasa</span>
+            </div>
+        </div>
+        <header class="header">
+            <div class="inner">
                 <div class="header-left">
                     <div class="brand">
-                        <div class="logo-box">▦</div>
+                        <div class="logo">▦</div>
                         <div>
-                            <div class="brand-title"><span>INA</span>PROC</div>
-                            <div class="brand-sub">SPSE V5 BETA</div>
+                            <b><span>INA</span>PROC</b>
+                            <div class="sub">SPSE V5 BETA</div>
                         </div>
                     </div>
-                    <nav class="spse-nav"><a class="active">Beranda</a><a>Daftar Paket</a></nav>
+                    <nav class="mainnav"><a class="active">Beranda</a><a>Daftar Paket</a></nav>
                 </div>
                 <div class="user">
+                    <span>🔔</span>
                     <div class="avatar">AI</div>
-                    <div><strong>Agus Iswahyudi</strong><small id="spseRole">Pokja Pemilihan</small></div>
+                    <div><b>Agus Iswahyudi</b><small id="roleLabel">Pokja / PPK</small></div>
                 </div>
-            </header>
-        </template>
-        <template id="vmsHeader">
-            <header class="vms-header">
-                <div class="brand vms-brand">
-                    <div class="logo-box">▦</div>
-                    <div>
-                        <div class="brand-title"><span>INA</span>PROC</div>
-                        <div class="brand-sub">Manajemen Penyedia</div>
-                    </div>
-                </div>
-                <div class="vms-user">
-                    <span>🔔</span><span>✉</span>
-                    <div class="avatar">AP</div>
-                    <div><strong>Agus Iswahyudi</strong><small>Pokja/PPK · Read-only</small></div>
-                </div>
-            </header>
-        </template>
-
+            </div>
+        </header>
+        <main id="app"></main>
         <script>
-            const suppliers = {
-                p1: {
-                    name: "PT Nusantara Digital Konstruksi",
-                    nib: "9120311051584",
-                    npwp: "0032•••••••5000",
-                    form: "Perseroan Terbatas",
-                    qualification: "Non Kecil",
-                    kbli: [
-                        "62021 · Aktivitas Konsultasi Komputer",
-                        "62090 · Aktivitas Teknologi Informasi Lainnya",
-                        "63122 · Portal Web dan Platform Digital",
-                    ],
-                },
-                p2: {
-                    name: "PT Sinar Data Integrasi",
-                    nib: "9120311098821",
-                    npwp: "0047•••••••2000",
-                    form: "Perseroan Terbatas",
-                    qualification: "Non Kecil",
-                    kbli: ["62021 · Aktivitas Konsultasi Komputer", "63111 · Aktivitas Pengolahan Data"],
-                },
-                p3: {
-                    name: "CV Arunika Teknologi",
-                    nib: "8120311012440",
-                    npwp: "0081•••••••7000",
-                    form: "Persekutuan Komanditer",
-                    qualification: "Kecil",
-                    kbli: ["62090 · Aktivitas Teknologi Informasi Lainnya"],
-                },
-                p4: {
-                    name: "PT Solusi Utama Konsultan",
-                    nib: "9120311081200",
-                    npwp: "0011•••••••3000",
-                    form: "Perseroan Terbatas",
-                    qualification: "Non Kecil",
-                    kbli: ["70209 · Aktivitas Konsultasi Manajemen Lainnya"],
-                },
-            };
-            const experiences = [
-                {
-                    id: "PKT-2026-00182",
-                    name: "Pengembangan Sistem Informasi Transportasi Terpadu",
-                    klpd: "Kementerian Perhubungan",
-                    qual: "Non Kecil",
-                    value: "Rp 8.800.000.000",
-                    start: "12 Jan 2026",
-                    end: "18 Sep 2026",
-                    status: "Selesai",
-                    source: "SPSE",
-                },
-                {
-                    id: "PKT-2025-01821",
-                    name: "Integrasi Data Layanan Publik",
-                    klpd: "Pemerintah Provinsi Jawa Barat",
-                    qual: "Non Kecil",
-                    value: "Rp 5.450.000.000",
-                    start: "4 Feb 2025",
-                    end: "20 Des 2025",
-                    status: "Selesai",
-                    source: "SPSE",
-                },
-                {
-                    id: "PKT-2024-00471",
-                    name: "Penyediaan Infrastruktur Command Center",
-                    klpd: "Kabupaten Bekasi",
-                    qual: "Non Kecil",
-                    value: "Rp 12.300.000.000",
-                    start: "9 Mar 2024",
-                    end: "15 Nov 2024",
-                    status: "Selesai",
-                    source: "SPSE",
-                },
-                {
-                    id: "PKT-2023-00214",
-                    name: "Modernisasi Data Center Pemerintah",
-                    klpd: "Kementerian Dalam Negeri",
-                    qual: "Non Kecil",
-                    value: "Rp 7.250.000.000",
-                    start: "6 Feb 2023",
-                    end: "8 Des 2023",
-                    status: "Selesai",
-                    source: "SPSE",
-                },
-                {
-                    id: "PKT-2022-00991",
-                    name: "Pengembangan Portal Pelayanan Perizinan",
-                    klpd: "Kota Bandung",
-                    qual: "Non Kecil",
-                    value: "Rp 3.920.000.000",
-                    start: "11 Apr 2022",
-                    end: "20 Nov 2022",
-                    status: "Selesai",
-                    source: "SPSE",
-                },
-                {
-                    id: "PKT-2026-04110",
-                    name: "Implementasi Analitik Pengadaan Nasional",
-                    klpd: "LKPP",
-                    qual: "Non Kecil",
-                    value: "Rp 9.650.000.000",
-                    start: "3 Agu 2026",
-                    end: "28 Feb 2027",
-                    status: "Sedang Berjalan",
-                    source: "SPSE",
-                },
-                {
-                    id: "PKT-2026-03818",
-                    name: "Penguatan Infrastruktur Aplikasi Perhubungan",
-                    klpd: "Kementerian Perhubungan",
-                    qual: "Non Kecil",
-                    value: "Rp 6.120.000.000",
-                    start: "17 Jul 2026",
-                    end: "30 Apr 2027",
-                    status: "Sedang Berjalan",
-                    source: "SPSE",
-                },
-                {
-                    id: "PKT-2026-05122",
-                    name: "Pembangunan Dashboard Monitoring Daerah",
-                    klpd: "Provinsi Banten",
-                    qual: "Non Kecil",
-                    value: "Rp 4.750.000.000",
-                    start: "-",
-                    end: "-",
-                    status: "Berpotensi Berkontrak",
-                    source: "SPSE",
-                },
+            const completed = [
+                [
+                    "Tender konstruksi 1M",
+                    "Jakarta",
+                    "Provinsi Banten",
+                    "Kawasan Pusat, Jl. Syekh Moh. Nawawi Albantani No.1, Sukajaya, Kec. Curug, Kota Serang, Banten 42111",
+                    "1 Juli 2026",
+                    "Rp 1.000.000.000",
+                    "324324325325325",
+                    "jakarta",
+                    "-",
+                ],
+                [
+                    "[QA][Surat] Pekerjaan Konsultansi IT Masterplan",
+                    "Sulawesi",
+                    "Kementerian Imigrasi dan Pemasyarakatan",
+                    "Jl. HR Rasuna Said, Jakarta Selatan",
+                    "19 Agustus 2026",
+                    "Rp 880.000.000",
+                    "PKT-2025-01921",
+                    "-",
+                    "Non Kecil",
+                ],
+                [
+                    "[QA][Surat] Jasa Konsultansi Penyusunan Rencana Induk",
+                    "Cirebon",
+                    "Kota Cirebon",
+                    "Jl. Siliwangi No.84, Cirebon",
+                    "8 Agustus 2026",
+                    "Rp 212.900.000",
+                    "PKT-2025-01831",
+                    "-",
+                    "Non Kecil",
+                ],
+                [
+                    "[Test Tender] Penyusunan Laporan Keuangan Semester",
+                    "Jakarta",
+                    "Provinsi DKI Jakarta",
+                    "Jl. Medan Merdeka Selatan, Jakarta",
+                    "30 Juli 2026",
+                    "Rp 185.000.000",
+                    "PKT-2025-01777",
+                    "-",
+                    "Non Kecil",
+                ],
+                [
+                    "[QA RJA] Seleksi Jasa konsultasi perorangan Non Konstruksi",
+                    "Jakarta",
+                    "Provinsi DKI Jakarta",
+                    "Jl. Medan Merdeka Selatan, Jakarta",
+                    "10 Juli 2026",
+                    "Rp 568.309.938",
+                    "PKT-2024-01122",
+                    "-",
+                    "Non Kecil",
+                ],
+                [
+                    "Pembangunan Pusat Data Regional",
+                    "Surabaya",
+                    "Kementerian Komunikasi dan Digital",
+                    "Jl. Ketintang Baru, Surabaya",
+                    "21 Juni 2026",
+                    "Rp 7.250.000.000",
+                    "PKT-2024-00812",
+                    "-",
+                    "Non Kecil",
+                ],
+                [
+                    "Revitalisasi Sistem Informasi Perizinan",
+                    "Bandung",
+                    "Provinsi Jawa Barat",
+                    "Jl. Diponegoro No.22, Bandung",
+                    "10 Mei 2026",
+                    "Rp 3.920.000.000",
+                    "PKT-2024-00671",
+                    "-",
+                    "Non Kecil",
+                ],
             ];
-            const blacklists = [
-                {
-                    decree: "SK-114/DH/2026",
-                    agency: "Pemerintah Kota Bandung",
-                    reason: "Tidak menyelesaikan pekerjaan sesuai kontrak",
-                    start: "10 Jan 2026",
-                    end: "10 Jan 2027",
-                    status: "Aktif",
-                },
-                {
-                    decree: "SK-028/DH/2022",
-                    agency: "Kabupaten Bogor",
-                    reason: "Dokumen pelaksanaan tidak sesuai ketentuan",
-                    start: "2 Mar 2022",
-                    end: "2 Mar 2023",
-                    status: "Selesai",
-                },
+            const runningAll = [
+                [
+                    "Pembangunan Sistem Monitoring Infrastruktur Nasional",
+                    "Jakarta",
+                    "Kementerian PUPR",
+                    "Jl. Pattimura No.20, Kebayoran Baru, Jakarta Selatan",
+                    "",
+                    "Rp 12.500.000.000",
+                    "PKT-2026-04411",
+                    "Sedang Berjalan",
+                    "Non Kecil",
+                ],
+                [
+                    "Modernisasi Dashboard Pengadaan Daerah",
+                    "Bandung",
+                    "Provinsi Jawa Barat",
+                    "Jl. Diponegoro No.22, Bandung",
+                    "",
+                    "Rp 6.250.000.000",
+                    "PKT-2026-04610",
+                    "Sedang Berjalan",
+                    "Non Kecil",
+                ],
+                [
+                    "Pengembangan Command Center Transportasi",
+                    "Jakarta",
+                    "Kementerian Perhubungan",
+                    "Jl. Medan Merdeka Barat No.8, Jakarta",
+                    "",
+                    "Rp 8.850.000.000",
+                    "PKT-2026-04701",
+                    "Sedang Berjalan",
+                    "Non Kecil",
+                ],
+                [
+                    "Integrasi Layanan Data Nasional",
+                    "Jakarta",
+                    "Kementerian Dalam Negeri",
+                    "Jl. Medan Merdeka Utara No.7, Jakarta",
+                    "",
+                    "Rp 4.900.000.000",
+                    "PKT-2026-04791",
+                    "Sedang Berjalan",
+                    "Non Kecil",
+                ],
+                [
+                    "Penguatan Sistem Pengadaan Daerah",
+                    "Semarang",
+                    "Provinsi Jawa Tengah",
+                    "Jl. Pahlawan No.9, Semarang",
+                    "",
+                    "Rp 3.750.000.000",
+                    "PKT-2026-04820",
+                    "Sedang Berjalan",
+                    "Non Kecil",
+                ],
+                [
+                    "Pembangunan Portal Pelayanan Publik",
+                    "Yogyakarta",
+                    "Kota Yogyakarta",
+                    "Jl. Kenari No.56, Yogyakarta",
+                    "",
+                    "Rp 2.950.000.000",
+                    "PKT-2026-04889",
+                    "Sedang Berjalan",
+                    "Non Kecil",
+                ],
+                [
+                    "Implementasi Analitik Pengadaan",
+                    "Tangerang",
+                    "Provinsi Banten",
+                    "KP3B Curug, Serang, Banten",
+                    "",
+                    "Rp 5.250.000.000",
+                    "PKT-2026-04933",
+                    "Sedang Berjalan",
+                    "Non Kecil",
+                ],
+            ];
+            const potentialContracts = [
+                [
+                    "Pembangunan Dashboard Monitoring Pengadaan",
+                    "Serang",
+                    "Provinsi Banten",
+                    "Kawasan Pusat Pemerintahan Provinsi Banten, Serang",
+                    "",
+                    "Rp 4.750.000.000",
+                    "PKT-2026-05122",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Pengembangan Platform Infrastruktur Daerah",
+                    "Bandung",
+                    "Provinsi Jawa Barat",
+                    "Jl. Diponegoro No.22, Bandung",
+                    "",
+                    "Rp 6.350.000.000",
+                    "PKT-2026-05288",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Integrasi Sistem Transportasi Nasional",
+                    "Jakarta",
+                    "Kementerian Perhubungan",
+                    "Jl. Medan Merdeka Barat No.8, Jakarta",
+                    "",
+                    "Rp 9.200.000.000",
+                    "PKT-2026-05307",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Modernisasi Portal Pengadaan",
+                    "Bogor",
+                    "Kabupaten Bogor",
+                    "Jl. Tegar Beriman, Cibinong",
+                    "",
+                    "Rp 2.850.000.000",
+                    "PKT-2026-05318",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Pengembangan Data Lake Pemerintah",
+                    "Jakarta",
+                    "Kementerian Keuangan",
+                    "Jl. Dr. Wahidin Raya, Jakarta",
+                    "",
+                    "Rp 7.100.000.000",
+                    "PKT-2026-05344",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Implementasi Monitoring Konstruksi",
+                    "Surabaya",
+                    "Provinsi Jawa Timur",
+                    "Jl. Pahlawan No.110, Surabaya",
+                    "",
+                    "Rp 5.600.000.000",
+                    "PKT-2026-05390",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Integrasi Sistem Perizinan Daerah",
+                    "Bandung",
+                    "Kota Bandung",
+                    "Jl. Wastukencana No.2, Bandung",
+                    "",
+                    "Rp 3.150.000.000",
+                    "PKT-2026-05401",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Dashboard Kinerja Infrastruktur",
+                    "Semarang",
+                    "Provinsi Jawa Tengah",
+                    "Jl. Pahlawan No.9, Semarang",
+                    "",
+                    "Rp 4.450.000.000",
+                    "PKT-2026-05422",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Pengembangan Sistem Logistik Nasional",
+                    "Jakarta",
+                    "Kementerian Perdagangan",
+                    "Jl. M.I. Ridwan Rais No.5, Jakarta",
+                    "",
+                    "Rp 8.250.000.000",
+                    "PKT-2026-05477",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Modernisasi Sistem Arsip Digital",
+                    "Yogyakarta",
+                    "Provinsi DI Yogyakarta",
+                    "Kompleks Kepatihan, Yogyakarta",
+                    "",
+                    "Rp 2.600.000.000",
+                    "PKT-2026-05503",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Pembangunan Command Center Daerah",
+                    "Makassar",
+                    "Kota Makassar",
+                    "Jl. Ahmad Yani No.2, Makassar",
+                    "",
+                    "Rp 5.950.000.000",
+                    "PKT-2026-05541",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
+                [
+                    "Pengembangan Portal Data Terpadu",
+                    "Medan",
+                    "Provinsi Sumatera Utara",
+                    "Jl. Diponegoro No.30, Medan",
+                    "",
+                    "Rp 4.125.000.000",
+                    "PKT-2026-05598",
+                    "Berpotensi Berkontrak",
+                    "Non Kecil",
+                ],
             ];
             const bo = [
-                {
-                    person: "Budi Santoso",
-                    nik: "3273••••••••1021",
-                    current: "Pemilik Manfaat",
-                    other: "PT Sinar Data Integrasi",
-                    otherRole: "Direktur dan Pemilik Manfaat",
-                    basis: "NIK sama persis",
-                },
-                {
-                    person: "Sari Wulandari",
-                    nik: "3273••••••••8842",
-                    current: "Pemilik Manfaat",
-                    other: "CV Arunika Teknologi",
-                    otherRole: "Pemilik Manfaat",
-                    basis: "NIK sama persis",
-                },
+                [
+                    "JOKO SUJATMIKO",
+                    "3273••••••••0004",
+                    "Pemilik Manfaat",
+                    "PT NUSANTARA KARYA UTAMA",
+                    "Direktur / Pemilik Manfaat",
+                    "NIK sama persis",
+                ],
+                [
+                    "ROY ROYADI",
+                    "3273••••••••0101",
+                    "Pengurus",
+                    "CV ARUNIKA KONSTRUKSI",
+                    "Pemilik Manfaat",
+                    "NIK sama persis",
+                ],
             ];
-            let selected = new Set(["p1", "p2"]);
-            const params = new URLSearchParams(location.search);
-            let current = params.get("view") || location.hash.replace("#", "") || "pokja";
-            let supplierId = params.get("supplier") || "p1";
-            let scenario = "available";
-            const app = document.querySelector("#app");
-            const clone = (id) => document.querySelector("#" + id).content.cloneNode(true);
-            const spse = (content, role = "Pokja Pemilihan") => {
-                app.innerHTML = "";
-                app.append(clone("spseHeader"));
-                app.querySelector("#spseRole").textContent = role;
-                app.insertAdjacentHTML("beforeend", content);
-            };
-            const vms = (content) => {
-                app.innerHTML = "";
-                app.append(clone("vmsHeader"));
-                app.insertAdjacentHTML("beforeend", content);
-            };
-            const profileUrl = (id = "p1") => `?view=profile&supplier=${id}`;
-            const vmsUrl = (view, id = supplierId) => `?view=${view}&supplier=${id}`;
-            function activeProto() {
-                document
-                    .querySelectorAll(".proto-btn")
-                    .forEach((b) => b.classList.toggle("active", b.dataset.go === current));
+            const managerial = [
+                ["JOKO SUJATMIKO", "************0004", "***", "************3000", "Pemilik"],
+                ["ROY ROYADI", "************0101", "***", "************4000", "Pemilik"],
+                ["DAYAT", "************0011", "***", "************3200", "Pemilik"],
+                ["JOKO SUJATMIKO", "************0004", "***", "************3200", "Pengurus"],
+            ];
+            const experts = [
+                ["Yusran", "WNI", "auditor", "Tetap", "68 Bulan", "auditor"],
+                ["Ahmad", "WNI", "PPK", "Tetap", "30 Bulan", "PPK"],
+            ];
+
+            const blacklistHistory = [
+                [
+                    "SK-114/DH/2026",
+                    "Pemerintah Kota Bandung",
+                    "Tidak menyelesaikan pekerjaan sesuai kontrak",
+                    "10 Jan 2026",
+                    "10 Jan 2027",
+                    "Aktif",
+                ],
+                [
+                    "SK-028/DH/2022",
+                    "Kabupaten Bogor",
+                    "Dokumen pelaksanaan tidak sesuai ketentuan",
+                    "2 Mar 2022",
+                    "2 Mar 2023",
+                    "Selesai",
+                ],
+                [
+                    "SK-077/DH/2020",
+                    "Provinsi Jawa Barat",
+                    "Wanprestasi kontrak",
+                    "12 Mei 2020",
+                    "12 Mei 2021",
+                    "Selesai",
+                ],
+                [
+                    "SK-009/DH/2018",
+                    "Kota Bekasi",
+                    "Tidak memenuhi kewajiban kontrak",
+                    "3 Feb 2018",
+                    "3 Feb 2019",
+                    "Selesai",
+                ],
+            ];
+            const boHistory = [
+                [
+                    "JOKO SUJATMIKO",
+                    "3273••••••••0004",
+                    "Pemilik Manfaat",
+                    "PT NUSANTARA KARYA UTAMA",
+                    "Direktur / Pemilik Manfaat",
+                    "NIK sama persis",
+                ],
+                [
+                    "ROY ROYADI",
+                    "3273••••••••0101",
+                    "Pengurus",
+                    "CV ARUNIKA KONSTRUKSI",
+                    "Pemilik Manfaat",
+                    "NIK sama persis",
+                ],
+                ["DAYAT", "3273••••••••0011", "Pemilik", "PT SOLUSI INFRA UTAMA", "Pengurus", "NPWP sama persis"],
+                [
+                    "SUTRIANI",
+                    "3273••••••••4020",
+                    "Pengurus",
+                    "PT BUMI KARYA DIGITAL",
+                    "Pemilik Manfaat",
+                    "NIK sama persis",
+                ],
+            ];
+            const suppliers = [
+                ["DANUREKSA SARANA CIPTA", "Non Kecil", "41012 · Konstruksi Gedung Perkantoran"],
+                ["PT NUSANTARA KARYA UTAMA", "Non Kecil", "42101 · Konstruksi Jalan"],
+                ["CV ARUNIKA KONSTRUKSI", "Kecil", "41011 · Konstruksi Gedung Hunian"],
+                ["PT SOLUSI INFRA UTAMA", "Non Kecil", "42201 · Konstruksi Jaringan Telekomunikasi"],
+                ["PT BUMI KARYA DIGITAL", "Non Kecil", "62021 · Aktivitas Konsultasi Komputer"],
+            ];
+            function headerTitle(role, stage) {
+                document.querySelector("#roleLabel").textContent = role + " · " + stage;
             }
-            function participantRows() {
-                return Object.entries(suppliers)
-                    .map(
-                        ([id, s], i) =>
-                            `<tr><td><input class="check participant-check" type="checkbox" data-id="${id}" ${selected.has(id) ? "checked" : ""}></td><td><div class="name">${s.name}</div><div class="sub">NIB ${s.nib.slice(0, 4)}••••${s.nib.slice(-3)}</div></td><td>28 Oktober 2026</td><td><span class="badge green">Dokumen tersedia</span></td><td><a class="btn small" href="${profileUrl(id)}">Lihat Profil</a></td></tr>`
-                    )
-                    .join("");
+            function experienceTable(rows) {
+                return `<div class="table-wrap"><table class="profile-table"><thead><tr>
+ <th>Nama Tender</th><th>Lokasi</th><th>Instansi Pemberi Tugas dan Alamat</th><th>Tanggal Serah Terima</th><th>Nilai Kontrak dan No Kontrak</th><th>Keterangan</th><th>Klasifikasi</th>
+ </tr></thead><tbody>${rows
+     .map(
+         (r) => `<tr>
+ <td><div class="name">${r[0]}</div></td>
+ <td>${r[1]}</td>
+ <td><div>${r[2]}</div><div class="address">${r[3]}</div></td>
+ <td>${r[4] || "-"}</td>
+ <td><div>${r[5]}</div><div class="sub">No. ${r[6]}</div></td>
+ <td>${r[7] || "-"}</td>
+ <td>${r[8] || "-"}</td>
+ </tr>`
+     )
+     .join("")}</tbody></table></div>`;
             }
-            function entryPokja() {
-                spse(
-                    `<div class="spse-shell"><div class="breadcrumb">Beranda <span>›</span> Informasi Tender <span>›</span> Pemeriksaan Kualifikasi</div><div class="page-title-row"><div><h1>Pemeriksaan Kualifikasi Peserta</h1><p>Pengadaan Sistem Analitik dan Monitoring Transportasi Nasional</p></div><span class="badge">ID Paket 2026-118204</span></div><div class="tabs"><div class="tab">Informasi Tender</div><div class="tab">Pertanyaan & Penjelasan</div><div class="tab">Penawaran Peserta</div><div class="tab active">Evaluasi</div><div class="tab">Sanggahan</div></div><section class="card"><div class="card-head"><div><h2>Daftar Peserta</h2><p>Pilih 2–5 peserta untuk dibandingkan atau buka Profiling Penyedia secara individual.</p></div></div><div class="card-body"><div class="selection-bar"><div><strong id="selText">${selected.size} peserta dipilih</strong><small>Perbandingan hanya tersedia bagi Pokja.</small></div><button id="compareSelected" class="btn primary" ${selected.size < 2 ? "disabled" : ""}>Bandingkan Profil (${selected.size})</button></div><div class="table-wrap"><table><thead><tr><th></th><th>Nama Penyedia</th><th>Tanggal Daftar</th><th>Dokumen Kualifikasi</th><th>Profil Penyedia</th></tr></thead><tbody>${participantRows()}</tbody></table></div></div></section></div>`
-                );
-                bindEntry();
+            function top5ExperienceBlock(rows, vmsLabel) {
+                const top = rows.slice(0, 5);
+                const remaining = Math.max(0, rows.length - 5);
+                return `<div>${experienceTable(top)}
+   <div class="actions" style="margin-top:10px">
+     ${remaining > 0 ? `<span class="sub">${remaining} data lainnya tersedia di VMS.</span>` : ""}
+     <button class="btn" onclick="redirect('${vmsLabel}')">Lihat Semua di VMS ↗</button>
+   </div>
+ </div>`;
             }
-            function bindEntry() {
-                document.querySelectorAll(".participant-check").forEach(
-                    (c) =>
-                        (c.onchange = () => {
-                            c.checked ? selected.add(c.dataset.id) : selected.delete(c.dataset.id);
-                            if (selected.size > 5) {
-                                selected.delete(c.dataset.id);
-                                c.checked = false;
-                                alert("Maksimal 5 peserta.");
-                            }
-                            document.querySelector("#selText").textContent = `${selected.size} peserta dipilih`;
-                            let b = document.querySelector("#compareSelected");
-                            b.textContent = `Bandingkan Profil (${selected.size})`;
-                            b.disabled = selected.size < 2;
-                        })
-                );
-                document.querySelector("#compareSelected").onclick = () => go("compare");
+            let potentialPage = 1;
+            const potentialPageSize = 10;
+            function potentialTablePage() {
+                const start = (potentialPage - 1) * potentialPageSize;
+                const rows = potentialContracts.slice(start, start + potentialPageSize);
+                const totalPages = Math.ceil(potentialContracts.length / potentialPageSize);
+                return `<div>
+   <div class="table-wrap"><table class="profile-table"><thead><tr>
+    <th>Nama Tender</th><th>Lokasi</th><th>Instansi Pemberi Tugas dan Alamat</th><th>Tanggal Serah Terima</th><th>Nilai Kontrak dan No Kontrak</th><th>Keterangan</th><th>Klasifikasi</th><th>Aksi</th>
+   </tr></thead><tbody>${rows
+       .map(
+           (r) => `<tr>
+    <td><div class="name">${r[0]}</div></td><td>${r[1]}</td>
+    <td><div>${r[2]}</div><div class="address">${r[3]}</div></td>
+    <td>${r[4] || "-"}</td><td><div>${r[5]}</div><div class="sub">No. ${r[6]}</div></td>
+    <td>${r[7] || "-"}</td><td>${r[8] || "-"}</td>
+    <td><button class="btn" onclick="redirect('Detail Tender SPSE · ${r[6]}')">Lihat Detail Tender</button></td>
+   </tr>`
+       )
+       .join("")}</tbody></table></div>
+   <div class="actions" style="justify-content:space-between;margin-top:10px">
+     <span class="sub">Menampilkan ${start + 1}-${Math.min(start + rows.length, potentialContracts.length)} dari ${potentialContracts.length} data</span>
+     <div class="actions">
+       <button class="btn" ${potentialPage <= 1 ? "disabled" : ""} onclick="changePotentialPage(-1)">‹ Sebelumnya</button>
+       <span class="sub">Halaman ${potentialPage} / ${totalPages}</span>
+       <button class="btn" ${potentialPage >= totalPages ? "disabled" : ""} onclick="changePotentialPage(1)">Berikutnya ›</button>
+     </div>
+   </div>
+ </div>`;
             }
-            function entryPpk() {
-                spse(
-                    `<div class="spse-shell"><div class="breadcrumb">Beranda <span>›</span> E-Kontrak <span>›</span> Persiapan SPPBJ</div><div class="page-title-row"><div><h1>Reviu Hasil Pemilihan</h1><p>Periksa informasi calon penyedia sebelum menerbitkan SPPBJ.</p></div><span class="badge amber">SPPBJ belum diterbitkan</span></div><section class="card"><div class="card-head"><div><h2>Calon Penyedia</h2><p>Hasil pemilihan telah diterima dari Pokja.</p></div></div><div class="card-body"><div class="field-grid"><div class="field"><label>Nama Penyedia</label><strong>PT Nusantara Digital Konstruksi</strong></div><div class="field"><label>Nilai Penawaran</label><strong>Rp 14.825.000.000</strong></div><div class="field"><label>Status Evaluasi</label><strong>Lulus Evaluasi</strong></div><div class="field"><label>Status SPPBJ</label><strong>Belum diterbitkan</strong></div></div><div class="actions" style="margin-top:20px"><a class="btn primary" href="${profileUrl("p1")}">Lihat Profiling Penyedia</a><button class="btn">Lanjutkan Persiapan SPPBJ</button></div><p class="disclaimer">Profiling Penyedia adalah informasi pendukung dan tidak menerbitkan SPPBJ secara otomatis.</p></div></section></div>`,
-                    "PPK"
-                );
+            function changePotentialPage(delta) {
+                const totalPages = Math.ceil(potentialContracts.length / potentialPageSize);
+                potentialPage = Math.min(totalPages, Math.max(1, potentialPage + delta));
+                const target = document.querySelector("#potentialTableContainer");
+                if (target) target.innerHTML = potentialTablePage();
             }
-            function sourceCards() {
-                return `<div class="source-grid"><article class="source-card"><h3>Identitas, Kualifikasi, dan Bidang Usaha Penyedia</h3><p>Lihat detail penyedia pada VMS Manajemen Penyedia.</p><a target="_blank" class="btn" href="${vmsUrl("vms-identity")}">Buka VMS ↗</a></article><article class="source-card"><h3>Pengalaman Selesai 10 Tahun</h3><p>VMS terbuka dengan filter pekerjaan selesai dan rolling 10 tahun.</p><a target="_blank" class="btn" href="${vmsUrl("vms-experience")}">Buka VMS ↗</a></article><article class="source-card"><h3>Pekerjaan Berjalan</h3><p>VMS menampilkan paket dengan status tender sedang berjalan.</p><a target="_blank" class="btn" href="${vmsUrl("vms-running")}">Buka VMS ↗</a></article><article class="source-card"><h3>Rata-rata Penilaian Kinerja</h3><p>Nilai dikelola dan ditampilkan oleh halaman sistem sumber.</p><a target="_blank" class="btn" href="${vmsUrl("rating")}">Buka Penilaian Rata-Rata ↗</a></article></div>`;
+            window.changePotentialPage = changePotentialPage;
+            function profilingSections() {
+                return `<div class="section-label">Profiling Penyedia · Informasi Pendukung</div>
+ <section class="card profile-only"><div class="card-head"><div><h2>Pengalaman Selesai 10 Tahun</h2><p>Menampilkan maksimal 5 data terbaru. Detail lengkap tersedia di VMS.</p></div><span class="profile-note">Sumber VMS</span></div><div class="card-body">${top5ExperienceBlock(completed, "VMS · Pengalaman Selesai 10 Tahun")}</div></section>
+ <section class="card profile-only"><div class="card-head"><div><h2>Pekerjaan Berjalan (Semua)</h2><p>Menampilkan maksimal 5 data terbaru dari seluruh pekerjaan berjalan penyedia.</p></div><span class="profile-note">Sumber VMS</span></div><div class="card-body">${top5ExperienceBlock(runningAll, "VMS · Pekerjaan Berjalan")}</div></section>
+ <section class="card profile-only"><div class="card-head"><div><h2>Pekerjaan Berpotensi Berkontrak</h2><p>Jika data lebih dari 5 tetap dapat diperluas pada halaman ini. Pagination menggunakan 10 data per halaman.</p></div><span class="profile-note">Sumber SPSE</span></div><div class="card-body"><div id="potentialTableContainer">${potentialTablePage()}</div></div></section>
+ <section class="card profile-only"><div class="card-head"><div><h2>Riwayat Daftar Hitam</h2><p>Riwayat dibuka pada halaman Daftar Hitam INAPROC dengan filter nama penyedia.</p></div><span class="profile-note">Sumber Daftar Hitam INAPROC</span></div><div class="card-body"><button class="btn" onclick="redirectBlacklist()">Lihat Detail Riwayat ↗</button></div></section>
+ <section class="card profile-only"><div class="card-head"><div><h2>Rata-rata Penilaian Kinerja 4 Tahun</h2><p>Detail penilaian dibuka pada halaman khusus dengan filter nama penyedia secara otomatis.</p></div><span class="profile-note">URL detail TBD</span></div><div class="card-body"><button class="btn" onclick="redirect('Riwayat Penilaian Penyedia · filter nama otomatis')">Lihat Detail Penilaian ↗</button></div></section>`;
             }
-            const potentialRows = () =>
-                experiences
-                    .filter((x) => x.status === "Berpotensi Berkontrak")
-                    .map(
-                        (x) =>
-                            `<tr><td><div class="name">${x.name}</div><div class="sub">${x.id}</div></td><td>${x.klpd}</td><td>${x.qual}</td><td class="amount">${x.value}</td><td><span class="badge amber">${x.status}</span></td><td><div class="sub"><a target="_blank" class="btn" href="">Lihat Detail</a></span></td></tr>`
-                    )
-                    .join("");
-            function profile() {
-                let s = suppliers[supplierId];
-                spse(
-                    `<div class="spse-shell"><div class="breadcrumb">Beranda <span>›</span> Pemeriksaan Kualifikasi <span>›</span> Profiling Penyedia</div><section class="card"><div class="profile-name"><div><div class="meta">PROFILING PENYEDIA · ID PAKET 2026-118204</div><h1>${s.name}</h1><div class="meta">Profil diperbarui 29 Oktober 2026 · 09.15 WIB</div></div><div class="actions"><select id="scenario" class="select"><option value="available">Data tersedia</option><option value="blacklist-one">1 daftar hitam</option><option value="blacklist-multi">Lebih dari 1 daftar hitam</option><option value="bo-one">1 keterkaitan BO</option><option value="bo-multi">Lebih dari 1 keterkaitan BO</option><option value="empty">Tidak ada record</option><option value="failed">Sebagian sumber gagal</option></select><button class="btn" onclick="history.back()">Tutup Profil</button></div></div></section><div class="notice" style="margin-bottom:16px"><strong>Informasi pendukung untuk verifikasi</strong>Profiling tidak memberikan skor risiko, rekomendasi, keputusan lulus/gugur, atau keputusan penerbitan SPPBJ.</div><section class="card"><div class="card-head"><div><h2>Akses Detail Penyedia</h2></div></div><div class="card-body">${sourceCards()}</div></section><nav class="section-nav"><a href="#potential">Berpotensi Berkontrak</a><a href="#blacklist">Daftar Hitam</a><a href="#bo">Pemilik Manfaat</a></nav><div id="directSections"></div></div>`
-                );
-                document.querySelector("#scenario").value = scenario;
-                document.querySelector("#scenario").onchange = (e) => {
-                    scenario = e.target.value;
-                    renderDirect();
-                };
-                renderDirect();
+            function basePage(role, stage, eligible) {
+                headerTitle(role, stage);
+                return `<div class="shell"><div class="breadcrumb">Beranda › Informasi Tender › Dokumen Kualifikasi</div><div class="title-row"><div><h1>Persyaratan Kualifikasi Peserta</h1><p>[QA][Surat] Tender nilai Rp 500 Miliar Konsultansi Penyusunan Rencana Induk Jaringan...</p></div><div class="actions"><button class="btn">Panduan</button><button class="btn" onclick="go('print')">Cetak Dokumen Kualifikasi</button>${eligible ? `<button class="btn primary" onclick="go('compare')">Bandingkan Profiling Penyedia</button>` : ""}</div></div>
+ ${eligible ? `<div class="notice"><strong>Informasi Profiling Penyedia</strong>Section berpenanda ungu merupakan informasi pendukung dari sistem terkait dan bukan bagian dari data yang disubmit penyedia pada Dokumen Kualifikasi.</div>` : `<div class="notice lock"><strong>Profiling Penyedia belum tersedia pada tahap ini</strong>${role.startsWith("Pokja") ? "Akses tersedia mulai tahap Pembukaan Dokumen Kualifikasi." : "Akses PPK tersedia pada tahap Penandatanganan Kontrak."}</div>`}
+ <section class="card"><div class="card-head"><div><h2>Identitas Peserta</h2><p>Data identitas peserta pada Dokumen Kualifikasi.</p></div>${eligible ? `<div class="actions"><span class="profile-note">Sumber detail VMS</span><button class="btn" onclick="redirect('VMS · Identitas Penyedia · DANUREKSA SARANA CIPTA')">Lihat Detail di VMS ↗</button></div>` : ""}</div><div class="card-body"><div class="field-grid"><div class="field"><label>Nama</label><strong>DANUREKSA SARANA CIPTA</strong></div><div class="field"><label>Bentuk Usaha</label><strong>PERUSAHAAN_TERBATAS</strong></div><div class="field"><label>NPWP</label><strong>0032005415015000</strong></div><div class="field"><label>Alamat</label><strong>Jl. no sekolah kalibogor</strong></div><div class="field"><label>Kode Pos</label><strong>12210</strong></div><div class="field"><label>Telepon</label><strong>-</strong></div></div></div></section>
+ <section class="card"><div class="card-head"><h2>Izin Usaha</h2></div><div class="card-body"><div class="field-grid"><div class="field"><label>NIB</label><strong>9120311015384</strong></div><div class="field"><label>Status</label><strong>Semur Hidup</strong></div><div class="field"><label>Kualifikasi</label><strong>Non Kecil</strong></div></div></div></section>
+ <section class="card"><div class="card-head"><div><h2>Manajerial</h2><p>Data manajerial dari Dokumen Kualifikasi.</p></div></div><div class="card-body">
+ <div class="table-wrap"><table><thead><tr><th>Nama</th><th>KTP</th><th>Alamat</th><th>NPWP</th><th>Peran</th></tr></thead><tbody>
+ ${managerial.map((x) => `<tr><td><b>${x[0]}</b></td><td>${x[1]}</td><td>${x[2]}</td><td>${x[3]}</td><td>${x[4]}</td></tr>`).join("")}
+ </tbody></table></div></div></section>
+ <section class="card"><div class="card-head"><div><h2>Tenaga Ahli</h2><p>Data tenaga ahli dari Dokumen Kualifikasi.</p></div></div><div class="card-body">
+ <div class="table-wrap"><table><thead><tr><th>Nama</th><th>Kewarganegaraan</th><th>Jabatan</th><th>Status Pegawai</th><th>Pengalaman Kerja</th><th>Profesi/Keahlian</th></tr></thead><tbody>
+ ${experts.map((x) => `<tr><td><b>${x[0]}</b></td><td>${x[1]}</td><td>${x[2]}</td><td>${x[3]}</td><td>${x[4]}</td><td>${x[5]}</td></tr>`).join("")}
+ </tbody></table></div>
+ <div class="match-alert"><div class="icon">×</div><div><ul>
+ <li>Terdapat kesamaan data Nama: <b>Yusran</b>, NPWP pada <b>SOLUSI UTAMA KONSULTAN</b></li>
+ <li>Terdapat kesamaan data Nama: <b>Yusran</b>, NPWP pada <b>PERUSAHAAN PERSEROAN (PERSERO) PT. ADHI KARYA</b></li>
+ </ul></div></div>
+ </div></section>
+ <section class="card"><div class="card-head"><h2>Pengalaman Pekerjaan</h2><p>Data yang disubmit penyedia pada Dokumen Kualifikasi</p></div><div class="card-body">${experienceTable(completed.slice(0, 3))}</div></section>
+ <section class="card"><div class="card-head"><h2>Pekerjaan Sedang Berjalan</h2><p>Data yang disubmit penyedia pada Dokumen Kualifikasi</p></div><div class="card-body">${experienceTable([["Penyusunan komersial - test bel", "Jakarta", "LKPP", "Kompleks Rasuna Epicentrum, Jakarta", "29 November 2026", "Rp 120.000.000", "PKT-SUBMIT-01", "-", "konstruksi"]])}</div></section>
+<section class="card"><div class="card-head"><h2>Peralatan</h2></div><div class="card-body"><div class="field-grid"><div class="field"><label>Nama Alat</label><strong>Truck</strong></div><div class="field"><label>Jumlah / Kapasitas</label><strong>45</strong></div><div class="field"><label>Kondisi</label><strong>Baik</strong></div></div></div></section>
+ ${eligible ? profilingSections() : ""}
+ </div>`;
             }
-            function renderDirect() {
-                let failed = scenario === "failed",
-                    empty = scenario === "empty";
-                let bl =
-                    scenario === "blacklist-one"
-                        ? blacklists.slice(0, 1)
-                        : scenario === "blacklist-multi"
-                          ? blacklists
-                          : blacklists.slice(0, 1);
-                let bos = scenario === "bo-one" ? bo.slice(0, 1) : scenario === "bo-multi" ? bo : bo.slice(0, 1);
-                let html = `<section id="potential" class="card"><div class="card-head"><div><h2>Pengalaman Berpotensi Berkontrak</h2><p>Paket yang berpotensi menjadi kontrak baru; tidak digunakan untuk menghitung kapasitas.</p></div><span class="badge amber">SPSE · 29 Okt 2026</span></div><div class="card-body">${failed ? errorState("Data potensi berkontrak gagal dimuat", "Percobaan terakhir 29 Oktober 2026 · 09.15 WIB") : empty ? emptyState("Tidak ada paket berpotensi berkontrak berdasarkan data yang tersedia.") : `<div class="table-wrap"><table><thead><tr><th>Nama Tender / ID Paket</th><th>K/L/PD</th><th>Kualifikasi</th><th>Nilai Paket</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${potentialRows()}</tbody></table></div>`}</div></section><section id="blacklist" class="card"><div class="card-head"><div><h2>Riwayat Daftar Hitam</h2><p>Setiap periode ditampilkan sebagai record terpisah berdasarkan sumber resmi.</p></div><span class="badge ${failed ? "red" : bl.some((x) => x.status === "Aktif") ? "red" : "green"}">${failed ? "Gagal dimuat" : bl.length + " record"}</span></div><div class="card-body">${failed ? errorState("Data daftar hitam belum dapat diperiksa", "Kondisi ini tidak berarti penyedia bebas daftar hitam.") : empty ? emptyState("Tidak ditemukan record pada hasil pemeriksaan sumber resmi.") : `<div class="table-wrap"><table><thead><tr><th>Nomor Penetapan</th><th>Instansi</th><th>Alasan / Sanksi</th><th>Tanggal Mulai</th><th>Tanggal Selesai</th><th>Status</th></tr></thead><tbody>${bl.map((x) => `<tr><td>${x.decree}</td><td>${x.agency}</td><td>${x.reason}</td><td>${x.start}</td><td>${x.end}</td><td><span class="badge ${x.status === "Aktif" ? "red" : "green"}">${x.status}</span></td></tr>`).join("")}</tbody></table></div>`}<p class="disclaimer">Sumber : Daftar Hitam INAPROC - 29 Okt 2026</p></div></td></p></div></section><section id="bo" class="card"><div class="card-head"><div><h2>Pemilik Manfaat dan Keterkaitan Peserta</h2><p>Kesamaan diperiksa antar peserta dalam paket tender yang sama.</p></div><span class="badge ${failed ? "red" : empty ? "green" : "amber"}">${failed ? "Gagal dimuat" : empty ? "Tidak ada keterkaitan" : bos.length + " kesamaan"}</span></div><div class="card-body">${failed ? errorState("Data Pemilik Manfaat belum dapat diperiksa", "Sistem tidak membuat kesimpulan dari kegagalan sumber.") : empty ? emptyState("Tidak ditemukan kesamaan identifier Pemilik Manfaat dengan peserta lain dalam paket ini.") : `<div class="bo-alert"><strong>Ditemukan identifier Pemilik Manfaat yang sama pada peserta lain.</strong><small>Informasi ini adalah data pendukung dan bukan kesimpulan pelanggaran, afiliasi, atau kolusi.</small></div><div class="table-wrap"><table><thead><tr><th>Nama Individu</th><th>NIK Tersamarkan</th><th>Posisi pada ${suppliers[supplierId].name}</th><th>Peserta Lain dalam Paket</th><th>Posisi pada Peserta Lain</th><th>Dasar Kecocokan</th></tr></thead><tbody>${bos.map((x) => `<tr><td><strong>${x.person}</strong></td><td>${x.nik}</td><td>${x.current}</td><td>${x.other}</td><td>${x.otherRole}</td><td><span class="badge amber">${x.basis}</span></td></tr>`).join("")}</tbody></table></div>`}<p class="disclaimer">Sumber : AHU / sumber resmi - 29 Okt 2026</p></div></section>`;
-                document.querySelector("#directSections").innerHTML = html;
-            }
-            const emptyState = (t) => `<div class="empty">${t}</div>`;
-            const errorState = (a, b) => `<div class="error"><strong>${a}</strong>${b}</div>`;
-            function compare() {
-                spse(
-                    `<div class="spse-shell"><div class="breadcrumb">Beranda <span>›</span> Pemeriksaan Kualifikasi <span>›</span> Perbandingan Profil</div><div class="page-title-row"><div><h1>Bandingkan Profil Peserta</h1><p>Data dari VMS dan sistem sumber ditampilkan pada struktur yang sama tanpa skor atau rekomendasi.</p></div><button class="btn" onclick="go('pokja')">Kembali ke Daftar Peserta</button></div><div class="notice" style="margin-bottom:16px"><strong>Cara membaca perbandingan</strong>Perbedaan data tidak otomatis menentukan peserta lebih baik, lulus, atau gagal.</div><section class="card"><div class="card-body"><div class="compare-toolbar"><strong>3 peserta dipilih</strong><button id="toggleAllExp" class="btn small">Tampilkan seluruh pengalaman</button></div>${comparisonMarkup()}</div></section></div>`
-                );
-                document.querySelector("#toggleAllExp").onclick = (e) => {
-                    document.querySelectorAll(".more-exp").forEach((x) => x.classList.toggle("hidden"));
-                    e.target.textContent = e.target.textContent.includes("seluruh")
-                        ? "Tutup pengalaman tambahan"
-                        : "Tampilkan seluruh pengalaman";
-                };
-            }
-            function expList(offset = 0) {
-                return experiences
-                    .filter((x) => x.status === "Selesai")
-                    .map(
-                        (x, i) =>
-                            `<div class="experience-item ${i >= 3 ? "more-exp hidden" : ""}"><strong>${x.name}</strong><span>${x.klpd} · ${x.qual}</span><span>${x.value} · Selesai ${x.end}</span></div>`
-                    )
-                    .join("");
-            }
-            function comparisonMarkup() {
-                let ids = ["p1", "p2", "p3"];
-                let row = (label, vals) =>
-                    `<div class="compare-cell compare-label">${label}</div>${vals.map((v) => `<div class="compare-cell">${v}</div>`).join("")}`;
-                return `<div class="compare-grid"><div class="compare-cell compare-label">Data</div>${ids.map((id) => `<div class="compare-cell compare-provider"><strong>${suppliers[id].name}</strong><span>${suppliers[id].qualification}</span></div>`).join("")}<div class="compare-section">Identitas dan Kualifikasi · Sumber VMS</div>${row(
-                    "Bentuk Usaha",
-                    ids.map((id) => suppliers[id].form)
-                )}${row(
-                    "Kualifikasi",
-                    ids.map((id) => suppliers[id].qualification)
-                )}${row(
-                    "Bidang Usaha / KBLI",
-                    ids.map((id) => suppliers[id].kbli.join("<br>"))
-                )}<div class="compare-section">Pengalaman Selesai 10 Tahun · Sumber VMS</div>${row(
-                    "Daftar Pengalaman",
-                    ids.map(() => `<div class="experience-list">${expList()}</div>`)
-                )}<div class="compare-section">Pengalaman Berpotensi Berkontrak</div>${row(
-                    "Paket Potensial",
-                    ids.map((id, i) =>
-                        i === 0
-                            ? 'Pembangunan Dashboard Monitoring Daerah<br><span class="meta">Provinsi Banten · Rp 4,75 M</span>'
-                            : "Tidak ada record"
-                    )
-                )}<div class="compare-section">Daftar Hitam</div>${row(
-                    "Riwayat",
-                    ids.map((id, i) =>
-                        i === 0 ? "1 record aktif" : i === 1 ? "Tidak ditemukan record" : "Data belum tersedia"
-                    )
-                )}<div class="compare-section">Pemilik Manfaat dan Keterkaitan</div>${row(
-                    "Kesamaan Identifier",
-                    ids.map((id, i) => (i < 2 ? "Budi Santoso · NIK sama persis" : "Sari Wulandari · NIK sama persis"))
-                )}</div>`;
-            }
-            function vmsShell(active, body, title = "Data Kualifikasi") {
-                let tabs = [
-                    ["vms-identity", "Identitas"],
-                    ["vms-experience", "Pengalaman"],
-                    ["vms-running", "Pengalaman Berjalan"],
+
+            function entryPoint2() {
+                headerTitle("Agus Iswahyudi", "Anggota Pokja Pemilihan");
+                const peserta = [
+                    ["KALEMBO ADE MAUTAMA", "Rp 880.000.000", "Rp 880.000.000", "✓", "✓", "✓", "✓", "✓"],
+                    ["DANUREKSA SARANA CIPTA", "Rp 892.500.000", "Rp 892.500.000", "✓", "✓", "✓", "✓", "✓"],
+                    ["PT NUSANTARA KARYA UTAMA", "Rp 905.000.000", "Rp 905.000.000", "✓", "✓", "✓", "✓", "✓"],
+                    ["CV ARUNIKA KONSTRUKSI", "Rp 914.500.000", "Rp 914.500.000", "✓", "✓", "✓", "✓", "✓"],
+                    ["PT SOLUSI INFRA UTAMA", "Rp 918.000.000", "Rp 918.000.000", "✓", "✓", "✓", "✓", "✓"],
+                    ["PT BUMI KARYA DIGITAL", "Rp 919.500.000", "Rp 919.500.000", "✓", "✓", "✓", "✓", "✓"],
                 ];
-                vms(
-                    `<div class="vms-app"><aside class="vms-sidebar"><div class="side-title">Dashboard <span>⌃</span></div><div class="side-item">Kelola Penjualan</div><div class="side-item">Master Produk</div><div class="side-item group">Kompetisi⌄</div><div class="side-item group">Transaksi⌄</div><div class="side-item group">Merek⌄</div><div class="side-item group">Produk⌄</div><div class="side-item active">Data Kualifikasi</div><div class="side-item group">Pengaturan⌃</div><div class="side-item">Perusahaan dan Akun</div><div class="side-item">KBLI</div><div class="side-item">E-sign</div></aside><section class="vms-main"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><h1>${title}</h1><span class="readonly">◉ Akses read-only dari SPSE</span></div><nav class="vms-tabs">${tabs.map(([id, n]) => `<a href="${vmsUrl(id)}" class="vms-tab ${active === id ? "active" : ""}">${n}</a>`).join("")}<span class="vms-tab">Sertifikat Izin Usaha</span><span class="vms-tab">Sumber Daya Manusia</span><span class="vms-tab">Peralatan</span></nav>${body}</section></div>`
-                );
+
+                return `<div class="shell">
+   <div class="breadcrumb">Beranda <span>›</span> Informasi Tender <span>›</span> Evaluasi</div>
+
+   <div class="tabs" style="display:flex;gap:30px;border-bottom:1px solid var(--line);margin-bottom:18px">
+     <div style="padding:10px 0;color:#667085">Informasi Tender</div>
+     <div style="padding:10px 0;color:#667085">Pertanyaan & Penjelasan</div>
+     <div style="padding:10px 0;color:#667085">Penawaran Peserta</div>
+     <div style="padding:10px 0;color:#1f2937;font-weight:800;border-bottom:3px solid var(--red)">Evaluasi</div>
+   </div>
+
+   <section class="card">
+     <div class="card-head">
+       <div>
+         <h2>Hasil Evaluasi Peserta</h2>
+         <p>Pilih 2–5 peserta untuk dibandingkan Profiling Penyedianya.</p>
+       </div>
+     </div>
+
+     <div class="card-body">
+       <div class="selection-bar">
+         <div class="left">
+           <span class="selection-count" id="compareSelectionCount">0 peserta dipilih</span>
+           <span class="sub">Minimal 2, maksimal 5 peserta</span>
+         </div>
+         <button id="compareSelectedBtn" class="btn primary" disabled onclick="openSelectedComparison()">Bandingkan Profiling Penyedia</button>
+       </div>
+
+       <div class="table-wrap">
+         <table>
+           <thead>
+             <tr>
+               <th style="width:42px">Pilih</th>
+               <th>No</th>
+               <th>Nama Peserta</th>
+               <th>Harga Penawaran</th>
+               <th>Harga Terkoreksi</th>
+               <th>A</th><th>K</th><th>T</th><th>H</th><th>B</th>
+             </tr>
+           </thead>
+           <tbody>
+             ${peserta
+                 .map(
+                     (p, i) => `
+               <tr>
+                 <td><input class="compare-checkbox pokja-compare-check" type="checkbox" value="${i}" onchange="updatePokjaComparisonSelection()"></td>
+                 <td>${i + 1}</td>
+                 <td><button class="btn link" onclick="go('pokja-eligible')">${p[0]}</button></td>
+                 <td>${p[1]}</td>
+                 <td>${p[2]}</td>
+                 <td>${p[3]}</td><td>${p[4]}</td><td>${p[5]}</td><td>${p[6]}</td><td>${p[7]}</td>
+               </tr>`
+                 )
+                 .join("")}
+           </tbody>
+         </table>
+       </div>
+
+       <div class="sub" style="margin-top:8px">
+         Klik nama peserta untuk membuka Dokumen Kualifikasi + Profiling individual. Gunakan checkbox untuk membandingkan beberapa peserta.
+       </div>
+     </div>
+   </section>
+ </div>`;
             }
-            function vmsIdentity() {
-                let s = suppliers[supplierId];
-                vmsShell(
-                    "vms-identity",
-                    `<div class="vms-card"><div class="vms-card-title">${s.name}</div><section class="identity-section"><h2>Identitas Penyedia</h2><div class="vms-info-grid"><div class="vms-field"><label>Nama Penyedia</label><strong>${s.name}</strong></div><div class="vms-field"><label>NIB</label><strong>${s.nib}</strong></div><div class="vms-field"><label>NPWP</label><strong>${s.npwp}</strong></div><div class="vms-field"><label>Bentuk Usaha</label><strong>${s.form}</strong></div><div class="vms-field"><label>Sumber</label><strong>VMS / OSS</strong></div><div class="vms-field"><label>Terakhir Diperbarui</label><strong>29 Oktober 2026 · 08.42 WIB</strong></div></div></section><section class="identity-section"><h2>Kualifikasi Usaha</h2><div class="vms-info-grid"><div class="vms-field"><label>Kualifikasi</label><strong>${s.qualification}</strong></div><div class="vms-field"><label>Status Data</label><strong><span class="badge green">Tersedia</span></strong></div></div></section><section class="identity-section"><h2>Bidang Usaha / KBLI</h2><div class="kbli-list">${s.kbli
-                        .map((x) => {
-                            let [c, ...d] = x.split(" · ");
-                            return `<div class="kbli-row"><strong>${c}</strong><span>${d.join(" · ")}</span><span>KBLI 2020</span></div>`;
-                        })
-                        .join("")}</div></section></div>`
-                );
-            }
-            function expRows(records) {
-                return records
-                    .map(
-                        (x, i) =>
-                            `<tr><td>${i + 1}</td><td><div class="name">${x.name}</div></td><td>${x.id}</td><td>${x.klpd}</td><td>${x.qual}</td><td class="amount">${x.value}</td><td>${x.start}</td><td>${x.end}</td><td><span class="badge ${x.status === "Selesai" ? "green" : x.status === "Sedang Berjalan" ? "amber" : ""}">${x.status}</span></td><td>${x.source}</td></tr>`
-                    )
-                    .join("");
-            }
-            function expTable(records) {
-                return `<div class="table-wrap"><table><thead><tr><th>No</th><th>Nama Kontrak / Tender</th><th>ID Paket / No. Kontrak</th><th>K/L/PD</th><th>Kualifikasi</th><th>Nilai Kontrak</th><th>Tanggal Mulai</th><th>Tanggal Selesai</th><th>Status Paket Tender</th><th>Sumber</th></tr></thead><tbody id="expBody">${expRows(records)}</tbody></table></div><div class="pagination"><span>Menampilkan ${records.length} dari ${records.length} data</span><div class="actions"><button class="btn small">‹</button><button class="btn small primary">1</button><button class="btn small">›</button></div></div>`;
-            }
-            function vmsExperience() {
-                let records = experiences.filter((x) => x.status !== "Berpotensi Berkontrak");
-                vmsShell(
-                    "vms-experience",
-                    `<div class="vms-tools"><div class="left"><input id="expSearch" class="input" placeholder="Cari nama atau nomor kontrak"><select id="statusFilter" class="select"><option>Semua Status</option><option selected>Selesai</option><option>Sedang Berjalan</option></select><select class="select"><option>10 Tahun Terakhir</option><option>Semua Periode</option></select><button id="resetFilter" class="btn">Reset</button></div></div><div class="vms-card"><div class="vms-card-title">Daftar Pengalaman</div><div id="expTable">${expTable(records.filter((x) => x.status === "Selesai"))}</div></div>`
-                );
-                let search = document.querySelector("#expSearch"),
-                    filter = document.querySelector("#statusFilter");
-                let run = () => {
-                    let q = search.value.toLowerCase(),
-                        st = filter.value;
-                    let r = records.filter(
-                        (x) =>
-                            (st === "Semua Status" || x.status === st) && `${x.name} ${x.id}`.toLowerCase().includes(q)
-                    );
-                    document.querySelector("#expTable").innerHTML = r.length
-                        ? expTable(r)
-                        : emptyState("Tidak ada pengalaman yang sesuai dengan filter.");
-                };
-                search.oninput = run;
-                filter.onchange = run;
-                document.querySelector("#resetFilter").onclick = () => {
-                    search.value = "";
-                    filter.value = "Semua Status";
-                    run();
-                };
-            }
-            function vmsRunning() {
-                let records = experiences.filter((x) => x.status === "Sedang Berjalan");
-                vmsShell(
-                    "vms-running",
-                    `<div class="notice" style="margin-bottom:18px"><strong>Dasar klasifikasi</strong>Daftar ini menggunakan status paket tender yang dipetakan ke <b>SEDANG_BERJALAN</b>, bukan berdasarkan tanggal selesai.</div><div class="vms-tools"><div class="left"><input class="input" placeholder="Cari nama atau nomor kontrak"><select class="select"><option>Status: Sedang Berjalan</option></select></div></div><div class="vms-card"><div class="vms-card-title">Daftar Pengalaman Berjalan</div>${expTable(records)}</div>`
-                );
-            }
-            function rating() {
-                app.innerHTML = "";
-                app.append(clone("spseHeader"));
-                app.insertAdjacentHTML(
-                    "beforeend",
-                    `<div class="rating-shell"><div class="breadcrumb">Sistem Penilaian Kinerja <span>›</span> Rata-rata Penilaian Penyedia</div><div class="rating-card"><div class="meta">HALAMAN SUMBER · DATA SIMULASI</div><h1>Rata-rata Penilaian Kinerja</h1><p>${suppliers[supplierId].name} · Periode empat tahun sesuai ketentuan sistem sumber</p><div class="rating-value">88,6</div><div class="meta">Skala 0–100 · 12 record penilaian</div><div class="rating-note" style="margin-top:20px">Perhitungan, periode, dan nilai dikelola oleh sistem sumber. Profiling Penyedia hanya menyediakan akses menuju halaman ini.</div></div></div>`
-                );
-            }
-            function render() {
-                current = current || "pokja";
-                if (current === "pokja") entryPokja();
-                else if (current === "ppk") entryPpk();
-                else if (current === "profile") profile();
-                else if (current === "compare") compare();
-                else if (current === "vms-identity") vmsIdentity();
-                else if (current === "vms-experience") vmsExperience();
-                else if (current === "vms-running") vmsRunning();
-                else if (current === "rating") rating();
-                else {
-                    current = "pokja";
-                    entryPokja();
+
+            function updatePokjaComparisonSelection() {
+                const checks = [...document.querySelectorAll(".pokja-compare-check")];
+                const selected = checks.filter((x) => x.checked);
+                const count = selected.length;
+
+                const label = document.querySelector("#compareSelectionCount");
+                const button = document.querySelector("#compareSelectedBtn");
+                if (label) label.textContent = `${count} peserta dipilih`;
+                if (button) button.disabled = count < 2 || count > 5;
+
+                checks.forEach((x) => {
+                    if (!x.checked) x.disabled = count >= 5;
+                });
+
+                if (count < 5) {
+                    checks.forEach((x) => (x.disabled = false));
                 }
-                activeProto();
             }
-            function go(view) {
-                current = view;
-                history.pushState({}, "", `?view=${view}&supplier=${supplierId}`);
-                render();
+
+            function openSelectedComparison() {
+                const selected = [...document.querySelectorAll(".pokja-compare-check:checked")];
+                if (selected.length < 2 || selected.length > 5) return;
+                go("compare");
+            }
+
+            window.updatePokjaComparisonSelection = updatePokjaComparisonSelection;
+            window.openSelectedComparison = openSelectedComparison;
+
+            function ppkEntryPage() {
+                headerTitle("Paris Yolanda", "PPK");
+                return `<div class="shell">
+   <div class="breadcrumb">Beranda <span>›</span> Informasi Tender</div>
+   <div style="display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:18px">
+     <div style="padding:10px 0;color:#667085">Informasi Tender</div>
+     <div style="padding:10px 0;color:#667085">Pertanyaan & Penjelasan</div>
+     <div style="padding:10px 0;color:#667085">Penawaran Peserta</div>
+     <div style="padding:10px 0;font-weight:800;border-bottom:3px solid var(--red)">Evaluasi</div>
+     <div style="padding:10px 0;color:#667085">Sanggahan</div>
+   </div>
+
+   <section class="card">
+    <div class="card-head"><div><h2>Evaluasi [QA-IRMA] Tender autocreate</h2></div></div>
+    <div class="card-body">
+      <div class="notice"><strong>Informasi</strong>PPK hanya membuka profil penyedia pemenang/calon pemenang pada tahap yang diperbolehkan. Fitur perbandingan tidak tersedia untuk PPK.</div>
+      <div style="display:grid;grid-template-columns:180px 1fr;gap:8px 18px;margin-bottom:14px">
+        <strong>Kode Tender</strong><span>01KVCACJ83XBRGSBT5S79K47NE</span>
+        <strong>Nama Paket</strong><span>[QA-IRMA] Tender autocreate</span>
+        <strong>Nilai HPS</strong><span>Rp. 920.000.000,00</span>
+        <strong>Nilai Pagu</strong><span>Rp. 989.217.000,00</span>
+      </div>
+
+      <div class="table-wrap">
+       <table>
+        <thead><tr><th>No</th><th>Nama Peserta</th><th>Harga Penawaran</th><th>Harga Terkoreksi</th><th>A</th><th>K</th><th>T</th><th>H</th><th>B</th><th>P</th></tr></thead>
+        <tbody>
+         <tr>
+          <td>1</td>
+          <td><button class="btn link" onclick="go('ppk-eligible')">ASURANSI SINAR MAS</button></td>
+          <td>Rp. 880.000.000,00</td><td>Rp. 880.000.000,00</td>
+          <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>☆</td>
+         </tr>
+         <tr>
+          <td>2</td>
+          <td><button class="btn link" onclick="go('ppk-eligible')">KIRAI ABADI JAYA</button></td>
+          <td>Rp. 919.000.000,00</td><td>Rp. 919.000.000,00</td>
+          <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="sub" style="margin-top:8px">A Evaluasi Administrasi · K Evaluasi Kualifikasi · T Evaluasi Teknis · H Evaluasi Harga/Biaya · B Pembuktian Kualifikasi · P Pemenang</div>
+    </div>
+   </section>
+
+   <section class="card">
+    <div class="card-head"><h2>Status Persetujuan</h2></div>
+    <div class="card-body"><div class="table-wrap"><table><thead><tr><th>Anggota Pokja Pemilihan</th><th>Status</th><th>Tanggal</th><th>Alasan Tidak Setuju</th></tr></thead>
+    <tbody><tr><td>Najwa Yuliarti</td><td>✓</td><td>16 Agustus 2026 03:06</td><td></td></tr>
+    <tr><td>Agus Iswahyudi</td><td>✓</td><td>16 Agustus 2026 03:10</td><td></td></tr>
+    <tr><td>Zelaya Susanti</td><td>✓</td><td>16 Agustus 2026 03:12</td><td></td></tr></tbody></table></div></div>
+   </section>
+ </div>`;
+            }
+            function printPage() {
+                headerTitle("Pokja Pemilihan", "Cetak Dokumen Kualifikasi");
+                return `<div class="print-sheet">
+ <h1>Dokumen Kualifikasi Peserta</h1><div class="sub">DANUREKSA SARANA CIPTA · ID Paket 2026-118204</div>
+ <div class="print-meta"><div><b>Nama Penyedia</b>DANUREKSA SARANA CIPTA</div><div><b>NIB</b>9120311015384</div><div><b>NPWP</b>0032005415015000</div></div>
+ <h2>Manajerial</h2><div class="table-wrap"><table><thead><tr><th>Nama</th><th>KTP</th><th>Alamat</th><th>NPWP</th><th>Peran</th></tr></thead><tbody>${managerial.map((x) => `<tr><td>${x[0]}</td><td>${x[1]}</td><td>${x[2]}</td><td>${x[3]}</td><td>${x[4]}</td></tr>`).join("")}</tbody></table></div>
+ <h2>Tenaga Ahli</h2><div class="table-wrap"><table><thead><tr><th>Nama</th><th>Kewarganegaraan</th><th>Jabatan</th><th>Status Pegawai</th><th>Pengalaman Kerja</th><th>Profesi/Keahlian</th></tr></thead><tbody>${experts.map((x) => `<tr><td>${x[0]}</td><td>${x[1]}</td><td>${x[2]}</td><td>${x[3]}</td><td>${x[4]}</td><td>${x[5]}</td></tr>`).join("")}</tbody></table></div>
+ <div class="match-alert"><div class="icon">×</div><div><ul><li>Terdapat kesamaan data Nama: <b>Yusran</b>, NPWP pada <b>SOLUSI UTAMA KONSULTAN</b></li><li>Terdapat kesamaan data Nama: <b>Yusran</b>, NPWP pada <b>PERUSAHAAN PERSEROAN (PERSERO) PT. ADHI KARYA</b></li></ul></div></div>
+ <h2>Pengalaman Pekerjaan yang Disubmit</h2>${experienceTable(completed.slice(0, 3))}
+ <h2>Profiling Penyedia — Pengalaman Selesai 10 Tahun</h2>${experienceTable(completed.slice(0, 5))}<p>5 data terbaru ditampilkan. Detail lengkap tersedia di VMS.</p>
+ <h2>Profiling Penyedia — Pekerjaan Berjalan (Semua)</h2>${experienceTable(runningAll.slice(0, 5))}<p>5 data terbaru ditampilkan. Detail lengkap tersedia di VMS.</p>
+ <h2>Profiling Penyedia — Pekerjaan Berpotensi Berkontrak</h2>${experienceTable(potentialContracts.slice(0, 10))}<p>Menampilkan maksimal 10 data pada halaman cetak.</p>
+ <h2>Profiling Penyedia — Riwayat Daftar Hitam</h2><p>Detail tersedia pada Daftar Hitam INAPROC. Tautan cetak tidak memuat halaman eksternal.</p>
+ <h2>Profiling Penyedia — Rata-rata Penilaian Kinerja 4 Tahun</h2><p>Detail tersedia pada halaman Riwayat Penilaian Penyedia. URL TBD.</p>
+ <div class="actions" style="margin-top:18px"><button class="btn" onclick="window.print()">Print / Save PDF</button><button class="btn" onclick="go('pokja-eligible')">Kembali</button></div>
+ </div>`;
+            }
+            function comparePage() {
+                headerTitle("Pokja Pemilihan", "Bandingkan Profiling Penyedia");
+                const ids = [0, 1, 2, 3, 4];
+
+                const row = (label, vals) =>
+                    `<div class="cc label">${label}</div>${vals.map((v) => `<div class="cc">${v}</div>`).join("")}`;
+
+                const listBlock = (items, formatter, groupKey) => {
+                    const visible = items.slice(0, 3);
+                    const extra = items.slice(3);
+                    return `<div class="compare-list">
+     ${visible.map((x) => `<div class="compare-item">${formatter(x)}</div>`).join("")}
+     ${extra.map((x) => `<div class="compare-item compare-hidden hidden ${groupKey}-extra">${formatter(x)}</div>`).join("")}
+   </div>`;
+                };
+
+                const experienceFor = (idx) => {
+                    const rows = completed.slice(0, Math.min(completed.length, 4 + (idx % 3)));
+                    return listBlock(
+                        rows,
+                        (x) =>
+                            `<strong>${x[0]}</strong><span>${x[2]}</span><span>Serah Terima ${x[4]} · ${x[5]}</span>`,
+                        "exp"
+                    );
+                };
+
+                const runningFor = (idx) => {
+                    const rows = runningAll.slice(0, Math.min(runningAll.length, 4 + ((idx + 1) % 3)));
+                    return listBlock(
+                        rows,
+                        (x) => `<strong>${x[0]}</strong><span>${x[2]}</span><span>${x[5]} · ${x[7]}</span>`,
+                        "run"
+                    );
+                };
+
+                const potentialFor = (idx) => {
+                    const rows = potentialContracts.slice(0, Math.min(potentialContracts.length, 4 + (idx % 4)));
+                    return listBlock(
+                        rows,
+                        (x) =>
+                            `<strong>${x[0]}</strong><span>${x[2]}</span><span>${x[5]} · ${x[7]}</span><span>ID ${x[6]}</span>`,
+                        "pot"
+                    );
+                };
+
+                const blacklistFor = (idx) => {
+                    if (idx === 2) return `<span class="sub">Data belum tersedia</span>`;
+                    const rows = idx === 1 ? [] : blacklistHistory.slice(0, idx === 0 ? 4 : 3);
+                    if (!rows.length) return `<span class="sub">Tidak ditemukan record</span>`;
+                    return listBlock(
+                        rows,
+                        (x) =>
+                            `<strong>${x[0]} · ${x[5]}</strong><span>${x[1]}</span><span>${x[3]} – ${x[4]}</span><span>${x[2]}</span>`,
+                        "bl"
+                    );
+                };
+
+                const boFor = (idx) => {
+                    const rows = boHistory.filter((x, i) => i % 5 === idx || idx === 0).slice(0, idx === 0 ? 4 : 3);
+                    if (!rows.length) return `<span class="sub">Tidak ditemukan kesamaan</span>`;
+                    return listBlock(
+                        rows,
+                        (x) => `<strong>${x[0]}</strong><span>${x[2]} ↔ ${x[3]}</span><span>${x[4]} · ${x[5]}</span>`,
+                        "bo"
+                    );
+                };
+
+                const sectionHeader = (title, key) => {
+                    return `<div class="cs" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+      <span>${title}</span>
+      <button class="btn" onclick="toggleCompareSection('${key}',this)">Tampilkan semua</button>
+   </div>`;
+                };
+
+                return `<div class="shell">
+   <div class="breadcrumb">Beranda › Informasi Tender › Bandingkan Profiling Penyedia</div>
+   <div class="title-row">
+     <div>
+       <h1>Bandingkan Profiling Penyedia</h1>
+       <p>Maksimal 5 penyedia dalam satu proses perbandingan. Semua informasi ditampilkan dalam satu halaman.</p>
+     </div>
+     <button class="btn" onclick="go('pokja-eligible')">Kembali ke Dokumen Kualifikasi</button>
+   </div>
+
+   <div class="notice">
+     <strong>Informasi pendukung</strong>
+     Perbandingan tidak memberikan skor risiko, ranking, rekomendasi, keputusan lulus/gugur, atau kesimpulan pelanggaran.
+   </div>
+
+   <section class="card">
+     <div class="card-head"><div><h2>5 Penyedia Dipilih</h2><p>Batas maksimal perbandingan: 5 penyedia.</p></div></div>
+     <div class="card-body">
+       <div class="compare-grid five">
+         <div class="cc label">Data</div>
+         ${ids.map((i) => `<div class="cc head">${suppliers[i][0]}<div class="sub">${suppliers[i][1]}</div></div>`).join("")}
+
+         <div class="cs">Identitas & Kualifikasi</div>
+         ${row(
+             "Kualifikasi",
+             ids.map((i) => suppliers[i][1])
+         )}
+         ${row(
+             "KBLI",
+             ids.map((i) => suppliers[i][2])
+         )}
+
+         ${sectionHeader("Pengalaman Selesai 10 Tahun", "exp")}
+         ${row(
+             "Daftar Pengalaman",
+             ids.map((i) => experienceFor(i))
+         )}
+
+         ${sectionHeader("Pekerjaan Berjalan (Semua)", "run")}
+         ${row(
+             "Daftar Pekerjaan",
+             ids.map((i) => runningFor(i))
+         )}
+
+         ${sectionHeader("Pekerjaan Berpotensi Berkontrak", "pot")}
+         ${row(
+             "Daftar Paket",
+             ids.map((i) => potentialFor(i))
+         )}
+
+         ${sectionHeader("Riwayat Daftar Hitam", "bl")}
+         ${row(
+             "Riwayat",
+             ids.map((i) => blacklistFor(i))
+         )}
+
+         ${sectionHeader("Kesamaan Pemilik Manfaat", "bo")}
+         ${row(
+             "Riwayat Kesamaan",
+             ids.map((i) => boFor(i))
+         )}
+       </div>
+     </div>
+   </section>
+ </div>`;
+            }
+
+            function toggleCompareSection(key, button) {
+                const items = document.querySelectorAll("." + key + "-extra");
+                if (!items.length) {
+                    button.style.display = "none";
+                    return;
+                }
+                const opening = [...items].some((x) => x.classList.contains("hidden"));
+                items.forEach((x) => x.classList.toggle("hidden", !opening));
+                button.textContent = opening ? "Tutup data tambahan" : "Tampilkan semua";
+            }
+            window.toggleCompareSection = toggleCompareSection;
+
+            function redirect(label) {
+                alert("Simulasi redirect ke: " + label);
+            }
+            function redirectBlacklist() {
+                alert("Simulasi redirect ke daftar-hitam.inaproc.id dengan filter nama: DANUREKSA SARANA CIPTA");
+            }
+            function render(view) {
+                document.querySelectorAll(".pbtn").forEach((b) => b.classList.toggle("active", b.dataset.s === view));
+                if (view === "compare") {
+                    document.querySelector("#app").innerHTML = comparePage();
+                    return;
+                }
+                if (view === "entry2") {
+                    document.querySelector("#app").innerHTML = entryPoint2();
+                    return;
+                }
+                if (view === "ppk-entry") {
+                    document.querySelector("#app").innerHTML = ppkEntryPage();
+                    return;
+                }
+                if (view === "print") {
+                    document.querySelector("#app").innerHTML = printPage();
+                    return;
+                }
+                const cfg = {
+                    "pokja-eligible": ["Pokja Pemilihan", "Pembukaan Dokumen Kualifikasi", true],
+                    "pokja-before": ["Pokja Pemilihan", "Sebelum Pembukaan Dokumen Kualifikasi", false],
+                    "ppk-eligible": ["PPK", "Penandatanganan Kontrak", true],
+                    "ppk-before": ["PPK", "Sebelum Penandatanganan Kontrak", false],
+                }[view] || ["Pokja Pemilihan", "Pembukaan Dokumen Kualifikasi", true];
+                document.querySelector("#app").innerHTML = basePage(cfg[0], cfg[1], cfg[2]);
+            }
+            function go(v) {
+                history.pushState({}, "", "#" + v);
+                render(v);
             }
             window.go = go;
-            document.querySelectorAll(".proto-btn").forEach((b) => (b.onclick = () => go(b.dataset.go)));
-            window.onpopstate = () => {
-                let p = new URLSearchParams(location.search);
-                current = p.get("view") || "pokja";
-                supplierId = p.get("supplier") || "p1";
-                render();
-            };
-            render();
+            window.redirect = redirect;
+            window.redirectBlacklist = redirectBlacklist;
+            document.querySelectorAll(".pbtn").forEach((b) => (b.onclick = () => go(b.dataset.s)));
+            window.onpopstate = () => render(location.hash.slice(1) || "entry2");
+            render(location.hash.slice(1) || "entry2");
         </script>
     </body>
 </html>
