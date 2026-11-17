@@ -1525,6 +1525,10 @@
                             <span class="profile-note">Sumber SPSE</span>
                         </div>
                         <div class="card-body">
+                            <div class="profile-summary-row two" style="margin-bottom:12px">
+                                ${profileSummaryCard("Total paket tender", potentialContracts.length, "Seluruh paket berpotensi berkontrak")}
+                                ${profileSummaryCard("Total nilai paket tender", "Rp 64.375.000.000", "Akumulasi nilai seluruh paket berpotensi berkontrak")}
+                            </div>
                             <div id="potentialTableContainer">${potentialTablePage()}</div>
                         </div>
                     </section>
@@ -1564,7 +1568,7 @@
 
             function basePage(role, stage, eligible) {
                 headerTitle(role, stage);
-                return `<div class="shell"><div class="breadcrumb">Beranda › Informasi Tender › Dokumen Kualifikasi</div><div class="title-row"><div><h1>Persyaratan Kualifikasi Peserta</h1><p>[QA][Surat] Tender nilai Rp 500 Miliar Konsultansi Penyusunan Rencana Induk Jaringan...</p></div><div class="actions"><button class="btn">Panduan</button><button class="btn" onclick="go('print')">Cetak Dokumen Kualifikasi</button></div></div>
+                return `<div class="shell"><div class="breadcrumb">Beranda › Informasi Tender › Dokumen Kualifikasi & Profil Penyedia</div><div class="title-row"><div><h1>Persyaratan Kualifikasi Peserta & Profil Penyedia</h1><p>[QA][Surat] Tender nilai Rp 500 Miliar Konsultansi Penyusunan Rencana Induk Jaringan...</p></div><div class="actions"><button class="btn">Panduan</button><button class="btn" onclick="go('print')">Cetak Dokumen Kualifikasi</button></div></div>
  ${eligible ? `<div class="notice"><strong>Informasi Profiling Penyedia</strong>Section berpenanda ungu merupakan informasi pendukung dari sistem terkait dan bukan bagian dari data yang disubmit penyedia pada Dokumen Kualifikasi.</div>` : `<div class="notice lock"><strong>Profiling Penyedia belum tersedia pada tahap ini</strong>${role.startsWith("Pokja") ? "Akses tersedia mulai tahap Pembukaan Dokumen Kualifikasi." : "Akses PPK tersedia pada tahap Penandatanganan Kontrak."}</div>`}
  <section class="card"><div class="card-head"><div><h2>Identitas Peserta</h2><p>Data identitas peserta pada Dokumen Kualifikasi.</p></div></div><div class="card-body"><div class="field-grid"><div class="field"><label>Nama</label><strong>DANUREKSA SARANA CIPTA</strong></div><div class="field"><label>Bentuk Usaha</label><strong>PERUSAHAAN_TERBATAS</strong></div><div class="field"><label>NPWP</label><strong>0032005415015000</strong></div><div class="field"><label>Alamat</label><strong>Jl. no sekolah kalibogor</strong></div><div class="field"><label>Kode Pos</label><strong>12210</strong></div><div class="field"><label>Telepon</label><strong>-</strong></div></div></div></section>
  <section class="card"><div class="card-head"><h2>Izin Usaha</h2></div><div class="card-body"><div class="field-grid"><div class="field"><label>NIB</label><strong>9120311015384</strong></div><div class="field"><label>Status</label><strong>Semur Hidup</strong></div><div class="field"><label>Kualifikasi</label><strong>Non Kecil</strong></div></div></div></section>
@@ -1611,7 +1615,7 @@
                                 <strong>Nama Peserta</strong><span>ASURANSI SINAR MAS</span>
                                 <strong>Penyedia OAP</strong><span>Tidak</span>
                                 <strong>Lokasi Penyedia</strong><span>Jakarta</span>
-                                <strong>Data Kualifikasi</strong><span><button class="spse-name-link" onclick="go('pokja-eligible')">Lihat Detail</button></span>
+                                <strong>Data Kualifikasi dan Profil Penyedia</strong><span><button class="spse-name-link" onclick="go('pokja-eligible')">Lihat Detail</button></span>
                                 <strong>Masa Berlaku Penawaran</strong><span>60 hari</span>
                                 <strong>Penawaran Harga</strong><span><button class="btn">Detail</button></span>
                             </div>
