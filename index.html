@@ -340,6 +340,116 @@
                 color: #6c63a8;
                 font-weight: 700;
             }
+            .summary-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+            }
+            .summary-box {
+                border: 1px solid var(--line);
+                border-radius: 7px;
+                padding: 12px;
+                background: #fff;
+            }
+            .summary-box .summary-label {
+                font-size: 9px;
+                color: var(--muted);
+                margin-bottom: 4px;
+            }
+            .summary-box .summary-value {
+                font-size: 18px;
+                font-weight: 900;
+                line-height: 1.2;
+            }
+            .summary-box .summary-desc {
+                font-size: 9px;
+                color: var(--muted);
+                margin-top: 4px;
+            }
+            .profile-summary-row{
+                display:grid;
+                grid-template-columns:repeat(3,minmax(0,1fr));
+                gap:10px;
+            }
+            .profile-summary-row.two{
+                grid-template-columns:repeat(2,minmax(0,1fr));
+            }
+            .profile-direct{
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                gap:12px;
+                flex-wrap:wrap;
+                padding:4px 0;
+            }
+            .profile-direct .text{
+                min-width:0;
+            }
+            .profile-direct .text strong{
+                display:block;
+                margin-bottom:3px;
+            }
+            .profile-direct .text span{
+                color:var(--muted);
+                font-size:10px;
+            }
+            .profile-summary-card{
+                border:1px solid var(--line);
+                border-radius:7px;
+                padding:12px;
+                background:#fff;
+            }
+            .profile-summary-card .label{
+                color:var(--muted);
+                font-size:9px;
+                margin-bottom:4px;
+            }
+            .profile-summary-card .value{
+                font-size:17px;
+                font-weight:900;
+                line-height:1.25;
+            }
+            .profile-summary-card .desc{
+                color:var(--muted);
+                font-size:9px;
+                margin-top:4px;
+            }
+            .profile-summary-card .status-active{
+                color:#b42318;
+            }
+            .eval-table-note{
+                background:#eef6ff;
+                border:1px solid #84b8ff;
+                border-left:4px solid #2f80ed;
+                border-radius:4px;
+                padding:12px 14px;
+                margin-bottom:16px;
+                color:#344054;
+            }
+            .legend{
+                display:flex;
+                gap:10px;
+                flex-wrap:wrap;
+                margin-top:10px;
+                color:#475467;
+                font-size:9px;
+            }
+            .legend b{
+                display:inline-flex;
+                width:18px;height:18px;
+                border-radius:4px;
+                align-items:center;justify-content:center;
+                margin-right:4px;
+                color:#fff;
+                background:#344054;
+            }
+
+            .summary-action {
+                margin-top: 12px;
+                display: flex;
+                justify-content: flex-end;
+            }
+
             .kpi-grid {
                 display: grid;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -533,7 +643,117 @@
             }
             @media (max-width: 800px) {
                 .field-grid,
-                .kpi-grid {
+                .summary-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+            }
+            .summary-box {
+                border: 1px solid var(--line);
+                border-radius: 7px;
+                padding: 12px;
+                background: #fff;
+            }
+            .summary-box .summary-label {
+                font-size: 9px;
+                color: var(--muted);
+                margin-bottom: 4px;
+            }
+            .summary-box .summary-value {
+                font-size: 18px;
+                font-weight: 900;
+                line-height: 1.2;
+            }
+            .summary-box .summary-desc {
+                font-size: 9px;
+                color: var(--muted);
+                margin-top: 4px;
+            }
+            .profile-summary-row{
+                display:grid;
+                grid-template-columns:repeat(3,minmax(0,1fr));
+                gap:10px;
+            }
+            .profile-summary-row.two{
+                grid-template-columns:repeat(2,minmax(0,1fr));
+            }
+            .profile-direct{
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                gap:12px;
+                flex-wrap:wrap;
+                padding:4px 0;
+            }
+            .profile-direct .text{
+                min-width:0;
+            }
+            .profile-direct .text strong{
+                display:block;
+                margin-bottom:3px;
+            }
+            .profile-direct .text span{
+                color:var(--muted);
+                font-size:10px;
+            }
+            .profile-summary-card{
+                border:1px solid var(--line);
+                border-radius:7px;
+                padding:12px;
+                background:#fff;
+            }
+            .profile-summary-card .label{
+                color:var(--muted);
+                font-size:9px;
+                margin-bottom:4px;
+            }
+            .profile-summary-card .value{
+                font-size:17px;
+                font-weight:900;
+                line-height:1.25;
+            }
+            .profile-summary-card .desc{
+                color:var(--muted);
+                font-size:9px;
+                margin-top:4px;
+            }
+            .profile-summary-card .status-active{
+                color:#b42318;
+            }
+            .eval-table-note{
+                background:#eef6ff;
+                border:1px solid #84b8ff;
+                border-left:4px solid #2f80ed;
+                border-radius:4px;
+                padding:12px 14px;
+                margin-bottom:16px;
+                color:#344054;
+            }
+            .legend{
+                display:flex;
+                gap:10px;
+                flex-wrap:wrap;
+                margin-top:10px;
+                color:#475467;
+                font-size:9px;
+            }
+            .legend b{
+                display:inline-flex;
+                width:18px;height:18px;
+                border-radius:4px;
+                align-items:center;justify-content:center;
+                margin-right:4px;
+                color:#fff;
+                background:#344054;
+            }
+
+            .summary-action {
+                margin-top: 12px;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .kpi-grid {
                     grid-template-columns: 1fr;
                 }
                 .mainnav {
@@ -551,19 +771,179 @@
                     align-items: flex-start;
                 }
             }
+
+            .spse-page{
+                max-width:1180px;
+                margin:0 auto;
+                padding:20px 18px 60px;
+            }
+            .spse-breadcrumb{
+                color:#315fd4;
+                font-size:12px;
+                margin:10px 0 22px;
+            }
+            .spse-tabs{
+                display:flex;
+                gap:34px;
+                border-bottom:1px solid #e5e7eb;
+                margin-bottom:20px;
+                padding:0 10px;
+            }
+            .spse-tab{
+                padding:14px 0 12px;
+                color:#7b8494;
+                font-weight:700;
+                font-size:12px;
+                border-bottom:3px solid transparent;
+            }
+            .spse-tab.active{
+                color:#202938;
+                border-color:#e12b4b;
+            }
+            .spse-main-card{
+                background:#fff;
+                border:1px solid #e4e7ec;
+                border-radius:8px;
+                padding:14px;
+            }
+            .spse-title{
+                font-size:17px;
+                font-weight:800;
+                margin:2px 0 14px;
+            }
+            .spse-info{
+                background:#f0f7ff;
+                border:1px solid #66a9ff;
+                border-left:4px solid #2588ff;
+                border-radius:4px;
+                padding:12px 14px;
+                margin-bottom:14px;
+                display:flex;
+                align-items:center;
+                gap:10px;
+                color:#3f4d63;
+            }
+            .spse-info .i{
+                width:22px;height:22px;
+                border-radius:50%;
+                border:2px solid #2588ff;
+                color:#2588ff;
+                display:grid;place-items:center;
+                font-weight:900;
+                flex:0 0 auto;
+            }
+            .spse-meta{
+                display:grid;
+                grid-template-columns:220px 1fr;
+                gap:8px 18px;
+                padding:0 16px 14px;
+                font-size:11px;
+            }
+            .spse-meta strong{font-weight:800}
+            .spse-panel{
+                border:1px solid #e3e6eb;
+                border-radius:8px;
+                overflow:hidden;
+                margin-top:4px;
+            }
+            .spse-panel-title{
+                background:#f5f6f8;
+                padding:10px 14px;
+                font-weight:800;
+                font-size:11px;
+            }
+            .spse-table-wrap{padding:12px 14px 0;overflow:auto}
+            .spse-eval-table{
+                width:100%;
+                border-collapse:collapse;
+                min-width:900px;
+                font-size:11px;
+            }
+            .spse-eval-table th{
+                background:#f6f7f9;
+                color:#465066;
+                font-size:10px;
+                padding:12px 10px;
+                border-bottom:1px solid #e5e7eb;
+            }
+            .spse-eval-table td{
+                padding:13px 10px;
+                border-bottom:1px solid #edf0f3;
+                vertical-align:middle;
+            }
+            .spse-name-link{
+                background:none;
+                border:0;
+                padding:0;
+                color:#315fd4;
+                font-weight:700;
+                cursor:pointer;
+            }
+            .spse-name-link:hover{text-decoration:underline}
+            .spse-status{
+                display:inline-flex;
+                align-items:center;
+                justify-content:center;
+                width:18px;height:18px;
+                border-radius:4px;
+                font-weight:800;
+                font-size:10px;
+                color:#fff;
+                background:#344054;
+            }
+            .spse-status.k{background:#f04438}
+            .spse-status.h{background:#12b76a}
+            .spse-status.b{background:#f04438}
+            .spse-status.p{background:#f79009}
+            .spse-check{
+                color:#12b76a;
+                font-weight:900;
+                font-size:13px;
+            }
+            .spse-star{
+                color:#f79009;
+                font-size:15px;
+            }
+            .spse-legend{
+                display:flex;
+                flex-wrap:wrap;
+                gap:7px 12px;
+                padding:8px 14px 14px;
+                font-size:10px;
+                color:#475467;
+            }
+            .spse-compare{
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                gap:10px;
+                flex-wrap:wrap;
+                padding:10px 14px;
+                border-top:1px solid #edf0f3;
+                background:#fbfcfd;
+            }
+            .spse-compare .hint{
+                font-size:10px;
+                color:#667085;
+            }
+            .spse-approval{
+                margin-top:10px;
+            }
+            @media(max-width:800px){
+                .spse-tabs{gap:18px;overflow:auto}
+                .spse-meta{grid-template-columns:1fr}
+                .spse-page{padding:14px 10px 40px}
+            }
         </style>
     </head>
     <body>
         <div class="proto">
-            <div><b>PROTOTYPE</b> · Dokumen Kualifikasi + Profiling Penyedia</div>
+            <div><b>PROTOTYPE</b> · Profiling Penyedia</div>
             <div class="nav">
-                <button class="pbtn" data-s="pokja-eligible">Pokja · Eligible</button>
-                <button class="pbtn" data-s="pokja-before">Pokja · Sebelum Pembukaan</button>
-                <button class="pbtn" data-s="ppk-entry">Entry Point PPK</button>
-                <button class="pbtn" data-s="ppk-eligible">PPK · Penandatanganan Kontrak</button>
-                <button class="pbtn" data-s="ppk-before">PPK · Sebelum Penandatanganan</button>
-                <button class="pbtn" data-s="entry2">Entry Point · Detail Evaluasi</button>
-                <button class="pbtn" data-s="print">Cetak Dokumen</button>
+                <button class="pbtn" data-s="ppk-entry">PPK · SPPBJ</button>
+                <button class="pbtn" data-s="pokja-list">Pokja · List Peserta Evaluasi</button>
+                <button class="pbtn" data-s="entry2">Pokja · Detail Peserta</button>
+                <button class="pbtn" data-s="pokja-eligible">Dokumen Kualifikasi</button>
                 <button class="pbtn" data-s="compare">Bandingkan Profiling</button>
             </div>
         </div>
@@ -1013,7 +1393,7 @@
  </div>`;
             }
             let potentialPage = 1;
-            const potentialPageSize = 10;
+            const potentialPageSize = 5;
             function potentialTablePage() {
                 const start = (potentialPage - 1) * potentialPageSize;
                 const rows = potentialContracts.slice(start, start + potentialPageSize);
@@ -1049,19 +1429,144 @@
                 if (target) target.innerHTML = potentialTablePage();
             }
             window.changePotentialPage = changePotentialPage;
-            function profilingSections() {
-                return `<div class="section-label">Profiling Penyedia · Informasi Pendukung</div>
- <section class="card profile-only"><div class="card-head"><div><h2>Pengalaman Selesai 10 Tahun</h2><p>Menampilkan maksimal 5 data terbaru. Detail lengkap tersedia di VMS.</p></div><span class="profile-note">Sumber VMS</span></div><div class="card-body">${top5ExperienceBlock(completed, "VMS · Pengalaman Selesai 10 Tahun")}</div></section>
- <section class="card profile-only"><div class="card-head"><div><h2>Pekerjaan Berjalan (Semua)</h2><p>Menampilkan maksimal 5 data terbaru dari seluruh pekerjaan berjalan penyedia.</p></div><span class="profile-note">Sumber VMS</span></div><div class="card-body">${top5ExperienceBlock(runningAll, "VMS · Pekerjaan Berjalan")}</div></section>
- <section class="card profile-only"><div class="card-head"><div><h2>Pekerjaan Berpotensi Berkontrak</h2><p>Jika data lebih dari 5 tetap dapat diperluas pada halaman ini. Pagination menggunakan 10 data per halaman.</p></div><span class="profile-note">Sumber SPSE</span></div><div class="card-body"><div id="potentialTableContainer">${potentialTablePage()}</div></div></section>
- <section class="card profile-only"><div class="card-head"><div><h2>Riwayat Daftar Hitam</h2><p>Riwayat dibuka pada halaman Daftar Hitam INAPROC dengan filter nama penyedia.</p></div><span class="profile-note">Sumber Daftar Hitam INAPROC</span></div><div class="card-body"><button class="btn" onclick="redirectBlacklist()">Lihat Detail Riwayat ↗</button></div></section>
- <section class="card profile-only"><div class="card-head"><div><h2>Rata-rata Penilaian Kinerja 4 Tahun</h2><p>Detail penilaian dibuka pada halaman khusus dengan filter nama penyedia secara otomatis.</p></div><span class="profile-note">URL detail TBD</span></div><div class="card-body"><button class="btn" onclick="redirect('Riwayat Penilaian Penyedia · filter nama otomatis')">Lihat Detail Penilaian ↗</button></div></section>`;
+
+            function summaryCard(label, value, desc) {
+                return `<div class="summary-box">
+                    <div class="summary-label">${label}</div>
+                    <div class="summary-value">${value}</div>
+                    <div class="summary-desc">${desc}</div>
+                </div>`;
             }
+
+            function profilingSummarySection(title, description, sourceLabel, cards, buttonLabel, redirectLabel) {
+                return `<section class="card profile-only">
+                    <div class="card-head">
+                        <div>
+                            <h2>${title}</h2>
+                            <p>${description}</p>
+                        </div>
+                        <span class="profile-note">${sourceLabel}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="summary-grid">${cards.join("")}</div>
+                        <div class="summary-action">
+                            <button class="btn" onclick="redirect('${redirectLabel}')">${buttonLabel} ↗</button>
+                        </div>
+                    </div>
+                </section>`;
+            }
+
+            function profileSummaryCard(label, value, desc, extraClass="") {
+                return `<div class="profile-summary-card ${extraClass}">
+                    <div class="label">${label}</div>
+                    <div class="value">${value}</div>
+                    <div class="desc">${desc}</div>
+                </div>`;
+            }
+
+            function profilingSections() {
+                const activeBlacklist = blacklistHistory.some(x => x[5] === "Aktif");
+
+                return `<div class="section-label">Profiling Penyedia · Informasi Pendukung</div>
+
+                    <section class="card profile-only">
+                        <div class="card-head">
+                            <div><h2>Identitas Penyedia</h2><p>Detail identitas tetap dikelola pada VMS.</p></div>
+                            <span class="profile-note">Sumber VMS</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-direct">
+                                <div class="text">
+                                    <strong>DANUREKSA SARANA CIPTA</strong>
+                                    <span>Buka profil penyedia pada VMS untuk melihat informasi identitas lengkap.</span>
+                                </div>
+                                <button class="btn" onclick="redirect('VMS · Identitas Penyedia · DANUREKSA SARANA CIPTA')">Lihat Detail di VMS ↗</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card profile-only">
+                        <div class="card-head">
+                            <div><h2>Pengalaman Selesai 10 Tahun</h2><p>Ringkasan pengalaman selesai penyedia dalam periode Profiling.</p></div>
+                            <span class="profile-note">Sumber VMS</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-summary-row">
+                                ${profileSummaryCard("Total pekerjaan", completed.length, "Pengalaman selesai dalam periode Profiling")}
+                                ${profileSummaryCard("Periode", "1 Januari 2016 – 17 November 2026", "Periode pengalaman selesai 10 tahun")}
+                                ${profileSummaryCard("Total nilai kontrak", "Rp 14.016.209.938", "Akumulasi nilai kontrak pengalaman selesai")}
+                            </div>
+                            <div class="summary-action">
+                                <button class="btn" onclick="redirect('VMS · Pengalaman Selesai 10 Tahun')">Lihat Detail di VMS ↗</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card profile-only">
+                        <div class="card-head">
+                            <div><h2>Pekerjaan Berjalan (Semua)</h2><p>Ringkasan seluruh pekerjaan berjalan penyedia.</p></div>
+                            <span class="profile-note">Sumber VMS</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-summary-row">
+                                ${profileSummaryCard("Total pekerjaan", runningAll.length, "Seluruh pekerjaan yang masih berstatus berjalan")}
+                                ${profileSummaryCard("Periode", "Per 17 November 2026", "Snapshot pekerjaan berjalan pada saat data ditampilkan")}
+                                ${profileSummaryCard("Total nilai kontrak", "Rp 49.450.000.000", "Akumulasi nilai kontrak pekerjaan berjalan")}
+                            </div>
+                            <div class="summary-action">
+                                <button class="btn" onclick="redirect('VMS · Pekerjaan Berjalan')">Lihat Detail di VMS ↗</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card profile-only">
+                        <div class="card-head">
+                            <div><h2>Pekerjaan Berpotensi Berkontrak</h2><p>Data ditampilkan langsung di SPSE. Maksimal 5 data per halaman.</p></div>
+                            <span class="profile-note">Sumber SPSE</span>
+                        </div>
+                        <div class="card-body">
+                            <div id="potentialTableContainer">${potentialTablePage()}</div>
+                        </div>
+                    </section>
+
+                    <section class="card profile-only">
+                        <div class="card-head">
+                            <div><h2>Riwayat Daftar Hitam</h2><p>Ringkasan riwayat daftar hitam penyedia.</p></div>
+                            <span class="profile-note">Sumber Daftar Hitam INAPROC</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-summary-row two">
+                                ${profileSummaryCard("Jumlah riwayat ditemukan", blacklistHistory.length, "Seluruh record pada source")}
+                                ${profileSummaryCard("Status aktif", activeBlacklist ? "Ada" : "Tidak Ada", activeBlacklist ? "Terdapat riwayat daftar hitam yang masih aktif" : "Tidak terdapat riwayat aktif", activeBlacklist ? "status-active" : "")}
+                            </div>
+                            <div class="summary-action">
+                                <button class="btn" onclick="redirectBlacklist()">Lihat Detail Riwayat ↗</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card profile-only">
+                        <div class="card-head">
+                            <div><h2>Rata-rata Penilaian Kinerja 4 Tahun</h2><p>Nilai/detail tetap dilihat pada halaman source.</p></div>
+                            <span class="profile-note">Sumber Penilaian · URL TBD</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-direct">
+                                <div class="text">
+                                    <strong>Detail penilaian tersedia pada source</strong>
+                                    <span>SPSE tidak menghitung atau menampilkan ulang nilai pada halaman ini.</span>
+                                </div>
+                                <button class="btn" onclick="redirect('Riwayat Penilaian Penyedia · filter nama otomatis')">Lihat Detail Penilaian ↗</button>
+                            </div>
+                        </div>
+                    </section>`;
+            }
+
             function basePage(role, stage, eligible) {
                 headerTitle(role, stage);
-                return `<div class="shell"><div class="breadcrumb">Beranda › Informasi Tender › Dokumen Kualifikasi</div><div class="title-row"><div><h1>Persyaratan Kualifikasi Peserta</h1><p>[QA][Surat] Tender nilai Rp 500 Miliar Konsultansi Penyusunan Rencana Induk Jaringan...</p></div><div class="actions"><button class="btn">Panduan</button><button class="btn" onclick="go('print')">Cetak Dokumen Kualifikasi</button>${eligible ? `<button class="btn primary" onclick="go('compare')">Bandingkan Profiling Penyedia</button>` : ""}</div></div>
+                return `<div class="shell"><div class="breadcrumb">Beranda › Informasi Tender › Dokumen Kualifikasi</div><div class="title-row"><div><h1>Persyaratan Kualifikasi Peserta</h1><p>[QA][Surat] Tender nilai Rp 500 Miliar Konsultansi Penyusunan Rencana Induk Jaringan...</p></div><div class="actions"><button class="btn">Panduan</button><button class="btn" onclick="go('print')">Cetak Dokumen Kualifikasi</button></div></div>
  ${eligible ? `<div class="notice"><strong>Informasi Profiling Penyedia</strong>Section berpenanda ungu merupakan informasi pendukung dari sistem terkait dan bukan bagian dari data yang disubmit penyedia pada Dokumen Kualifikasi.</div>` : `<div class="notice lock"><strong>Profiling Penyedia belum tersedia pada tahap ini</strong>${role.startsWith("Pokja") ? "Akses tersedia mulai tahap Pembukaan Dokumen Kualifikasi." : "Akses PPK tersedia pada tahap Penandatanganan Kontrak."}</div>`}
- <section class="card"><div class="card-head"><div><h2>Identitas Peserta</h2><p>Data identitas peserta pada Dokumen Kualifikasi.</p></div>${eligible ? `<div class="actions"><span class="profile-note">Sumber detail VMS</span><button class="btn" onclick="redirect('VMS · Identitas Penyedia · DANUREKSA SARANA CIPTA')">Lihat Detail di VMS ↗</button></div>` : ""}</div><div class="card-body"><div class="field-grid"><div class="field"><label>Nama</label><strong>DANUREKSA SARANA CIPTA</strong></div><div class="field"><label>Bentuk Usaha</label><strong>PERUSAHAAN_TERBATAS</strong></div><div class="field"><label>NPWP</label><strong>0032005415015000</strong></div><div class="field"><label>Alamat</label><strong>Jl. no sekolah kalibogor</strong></div><div class="field"><label>Kode Pos</label><strong>12210</strong></div><div class="field"><label>Telepon</label><strong>-</strong></div></div></div></section>
+ <section class="card"><div class="card-head"><div><h2>Identitas Peserta</h2><p>Data identitas peserta pada Dokumen Kualifikasi.</p></div></div><div class="card-body"><div class="field-grid"><div class="field"><label>Nama</label><strong>DANUREKSA SARANA CIPTA</strong></div><div class="field"><label>Bentuk Usaha</label><strong>PERUSAHAAN_TERBATAS</strong></div><div class="field"><label>NPWP</label><strong>0032005415015000</strong></div><div class="field"><label>Alamat</label><strong>Jl. no sekolah kalibogor</strong></div><div class="field"><label>Kode Pos</label><strong>12210</strong></div><div class="field"><label>Telepon</label><strong>-</strong></div></div></div></section>
  <section class="card"><div class="card-head"><h2>Izin Usaha</h2></div><div class="card-body"><div class="field-grid"><div class="field"><label>NIB</label><strong>9120311015384</strong></div><div class="field"><label>Status</label><strong>Semur Hidup</strong></div><div class="field"><label>Kualifikasi</label><strong>Non Kecil</strong></div></div></div></section>
  <section class="card"><div class="card-head"><div><h2>Manajerial</h2><p>Data manajerial dari Dokumen Kualifikasi.</p></div></div><div class="card-body">
  <div class="table-wrap"><table><thead><tr><th>Nama</th><th>KTP</th><th>Alamat</th><th>NPWP</th><th>Peran</th></tr></thead><tbody>
@@ -1085,79 +1590,310 @@
 
             function entryPoint2() {
                 headerTitle("Agus Iswahyudi", "Anggota Pokja Pemilihan");
+                return `<div class="shell">
+                    <div class="breadcrumb">Beranda <span>›</span> Informasi Tender <span>›</span> Evaluasi <span>›</span> Detail Peserta</div>
+
+                    <div style="display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:18px">
+                        <div style="padding:10px 0;color:#667085">Informasi Tender</div>
+                        <div style="padding:10px 0;color:#667085">Pertanyaan & Penjelasan</div>
+                        <div style="padding:10px 0;color:#667085">Penawaran Peserta</div>
+                        <div style="padding:10px 0;font-weight:800;border-bottom:3px solid var(--red)">Evaluasi</div>
+                        <div style="padding:10px 0;color:#667085">Sanggahan</div>
+                    </div>
+
+                    <section class="card">
+                        <div class="card-head">
+                            <div><h2>Detail Evaluasi Peserta</h2><p>ASURANSI SINAR MAS</p></div>
+                            <button class="btn" onclick="go('pokja-list')">← Kembali ke Hasil Evaluasi</button>
+                        </div>
+                        <div class="card-body">
+                            <div style="display:grid;grid-template-columns:230px 1fr;gap:8px 18px;align-items:start;margin-bottom:16px">
+                                <strong>Nama Peserta</strong><span>ASURANSI SINAR MAS</span>
+                                <strong>Penyedia OAP</strong><span>Tidak</span>
+                                <strong>Lokasi Penyedia</strong><span>Jakarta</span>
+                                <strong>Data Kualifikasi</strong><span><button class="spse-name-link" onclick="go('pokja-eligible')">Lihat Detail</button></span>
+                                <strong>Masa Berlaku Penawaran</strong><span>60 hari</span>
+                                <strong>Penawaran Harga</strong><span><button class="btn">Detail</button></span>
+                            </div>
+
+                            <div class="notice">
+                                <strong>Profiling Penyedia</strong>
+                                Profiling tersedia di dalam Dokumen Kualifikasi sebagai informasi pendukung. Klik <b>Dokumen Kualifikasi</b> untuk membuka data existing dan summary Profiling Penyedia.
+                            </div>
+
+                            <div style="border:1px solid var(--line);border-radius:7px;overflow:hidden">
+                                <div style="display:flex;gap:26px;padding:0 14px;border-bottom:1px solid var(--line)">
+                                    <div style="padding:12px 0;font-weight:800;border-bottom:3px solid var(--red)">Evaluasi Administrasi</div>
+                                    <div style="padding:12px 0;color:#667085;font-weight:700">Evaluasi Kualifikasi</div>
+                                    <div style="padding:12px 0;color:#667085;font-weight:700">Evaluasi Teknis</div>
+                                    <div style="padding:12px 0;color:#667085;font-weight:700">Evaluasi Harga/Biaya</div>
+                                    <div style="padding:12px 0;color:#667085;font-weight:700">Pembuktian Kualifikasi</div>
+                                </div>
+                                <div style="padding:14px">
+                                    <div class="table-wrap">
+                                        <table>
+                                            <thead><tr><th>Persyaratan</th><th>Memenuhi</th></tr></thead>
+                                            <tbody>
+                                                <tr><td>Masa Berlaku Penawaran</td><td>☑</td></tr>
+                                                <tr><td>Surat Penawaran</td><td>☑</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>`;
+            }
+
+
+            function pokjaParticipantListPage() {
+                headerTitle("Agus Iswahyudi", "Anggota Pokja Pemilihan");
                 const peserta = [
-                    ["KALEMBO ADE MAUTAMA", "Rp 880.000.000", "Rp 880.000.000", "✓", "✓", "✓", "✓", "✓"],
-                    ["DANUREKSA SARANA CIPTA", "Rp 892.500.000", "Rp 892.500.000", "✓", "✓", "✓", "✓", "✓"],
-                    ["PT NUSANTARA KARYA UTAMA", "Rp 905.000.000", "Rp 905.000.000", "✓", "✓", "✓", "✓", "✓"],
-                    ["CV ARUNIKA KONSTRUKSI", "Rp 914.500.000", "Rp 914.500.000", "✓", "✓", "✓", "✓", "✓"],
-                    ["PT SOLUSI INFRA UTAMA", "Rp 918.000.000", "Rp 918.000.000", "✓", "✓", "✓", "✓", "✓"],
-                    ["PT BUMI KARYA DIGITAL", "Rp 919.500.000", "Rp 919.500.000", "✓", "✓", "✓", "✓", "✓"],
+                    ["ASURANSI SINAR MAS", "Rp. 880.000.000,00", "Rp. 880.000.000,00", true],
+                    ["KIRAI ABADI JAYA", "Rp. 919.000.000,00", "Rp. 919.000.000,00", false],
+                    ["DANUREKSA SARANA CIPTA", "Rp. 912.500.000,00", "Rp. 912.500.000,00", false],
+                    ["PT NUSANTARA KARYA UTAMA", "Rp. 915.000.000,00", "Rp. 915.000.000,00", false]
+                ];
+
+                return `<div class="spse-page">
+                    <div class="spse-breadcrumb">Beranda &nbsp;›&nbsp; Informasi Tender</div>
+
+                    <div class="spse-tabs">
+                        <div class="spse-tab">Informasi Tender</div>
+                        <div class="spse-tab">Pertanyaan <span class="badge">1</span> &amp; Penjelasan <span class="badge">0</span></div>
+                        <div class="spse-tab">Penawaran Peserta</div>
+                        <div class="spse-tab active">Evaluasi</div>
+                        <div class="spse-tab">Sanggahan <span class="badge">0</span></div>
+                    </div>
+
+                    <section class="spse-main-card">
+                        <div class="spse-title">Evaluasi [QA-IRMA] Tender autocreate</div>
+
+                        <div class="spse-info">
+                            <div class="i">i</div>
+                            <div>Klik pada <b>Nama Peserta</b> untuk melakukan evaluasi</div>
+                        </div>
+
+                        <div class="spse-meta">
+                            <strong>Kode Tender</strong><span>01KVCACJ83XBRGSBT5S79K47NE</span>
+                            <strong>Nama Paket</strong><span>[QA-IRMA] Tender autocreate</span>
+                            <strong>Nilai HPS</strong><span>Rp. 920.000.000,00</span>
+                            <strong>Nilai Pagu</strong><span>Rp. 989.217.000,00</span>
+                        </div>
+
+                        <div class="spse-panel">
+                            <div class="spse-panel-title">Hasil Evaluasi</div>
+                            <div class="spse-table-wrap">
+                                <table class="spse-eval-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:40px">Pilih</th>
+                                            <th style="width:50px">No</th>
+                                            <th>Nama Peserta</th>
+                                            <th>Harga Penawaran</th>
+                                            <th>Harga Terkoreksi</th>
+                                            <th><span class="spse-status">A</span></th>
+                                            <th><span class="spse-status k">K</span></th>
+                                            <th><span class="spse-status">T</span></th>
+                                            <th><span class="spse-status h">H</span></th>
+                                            <th><span class="spse-status b">B</span></th>
+                                            <th><span class="spse-status p">P</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${peserta.map((p,i)=>`
+                                            <tr>
+                                                <td><input class="compare-checkbox pokja-compare-check" type="checkbox" value="${i}" onchange="updatePokjaComparisonSelection()"></td>
+                                                <td>${i+1}</td>
+                                                <td><button type="button" class="spse-name-link" onclick="go('entry2')">${p[0]}</button></td>
+                                                <td>${p[1]}</td>
+                                                <td>${p[2]}</td>
+                                                <td><span class="spse-check">✓</span></td>
+                                                <td><span class="spse-check">✓</span></td>
+                                                <td><span class="spse-check">✓</span></td>
+                                                <td><span class="spse-check">✓</span></td>
+                                                <td><span class="spse-check">✓</span></td>
+                                                <td>${p[3] ? '<span class="spse-star">☆</span>' : ''}</td>
+                                            </tr>`).join("")}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="spse-legend">
+                                <span><span class="spse-status">A</span> Evaluasi Administrasi</span>
+                                <span><span class="spse-status k">K</span> Evaluasi Kualifikasi</span>
+                                <span><span class="spse-status">T</span> Evaluasi Teknis</span>
+                                <span><span class="spse-status h">H</span> Evaluasi Harga/Biaya</span>
+                                <span><span class="spse-status b">B</span> Pembuktian Kualifikasi</span>
+                                <span><span class="spse-status p">P</span> Pemenang</span>
+                            </div>
+
+                            <div class="spse-compare">
+                                <div>
+                                    <div class="selection-count" id="compareSelectionCount">0 peserta dipilih</div>
+                                    <div class="hint">Pilih minimal 2 dan maksimal 5 peserta untuk membandingkan Profiling Penyedia.</div>
+                                </div>
+                                <button id="compareSelectedBtn" class="btn primary" disabled onclick="openSelectedComparison()">Bandingkan Profiling Penyedia</button>
+                            </div>
+                        </div>
+
+                        <div class="spse-panel spse-approval">
+                            <div class="spse-panel-title">Status Persetujuan</div>
+                            <div class="spse-table-wrap" style="padding-bottom:12px">
+                                <table class="spse-eval-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Anggota Pokja Pemilihan</th>
+                                            <th>Status</th>
+                                            <th>Tanggal</th>
+                                            <th>Alasan Tidak Setuju</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td><span style="color:#315fd4">Najwa Yuliarti</span></td><td>✓</td><td>16 Agustus 2026 03:06</td><td></td></tr>
+                                        <tr><td><span style="color:#315fd4">Agus Iswahyudi</span></td><td>✓</td><td>16 Agustus 2026 03:10</td><td></td></tr>
+                                        <tr><td><span style="color:#315fd4">Zelaya Susanti</span></td><td>✓</td><td>16 Agustus 2026 03:12</td><td></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>`;
+            }
+
+
+            function qualificationParticipantListPage() {
+                headerTitle("Agus Iswahyudi", "Anggota Pokja Pemilihan");
+
+                const peserta = [
+                    ["KALEMBO ADE MAUTAMA", "Tidak", "Jakarta Selatan", "Lengkap"],
+                    ["DANUREKSA SARANA CIPTA", "Tidak", "Jakarta Selatan", "Lengkap"],
+                    ["PT NUSANTARA KARYA UTAMA", "Tidak", "Jakarta", "Lengkap"],
+                    ["CV ARUNIKA KONSTRUKSI", "Tidak", "Bandung", "Lengkap"],
+                    ["PT SOLUSI INFRA UTAMA", "Tidak", "Jakarta", "Lengkap"],
+                    ["PT BUMI KARYA DIGITAL", "Tidak", "Tangerang", "Lengkap"]
                 ];
 
                 return `<div class="shell">
-   <div class="breadcrumb">Beranda <span>›</span> Informasi Tender <span>›</span> Evaluasi</div>
+                    <div class="breadcrumb">
+                        Beranda <span>›</span> Informasi Tender <span>›</span> Evaluasi
+                        <span>›</span> Detail Evaluasi <span>›</span> Data Kualifikasi
+                    </div>
 
-   <div class="tabs" style="display:flex;gap:30px;border-bottom:1px solid var(--line);margin-bottom:18px">
-     <div style="padding:10px 0;color:#667085">Informasi Tender</div>
-     <div style="padding:10px 0;color:#667085">Pertanyaan & Penjelasan</div>
-     <div style="padding:10px 0;color:#667085">Penawaran Peserta</div>
-     <div style="padding:10px 0;color:#1f2937;font-weight:800;border-bottom:3px solid var(--red)">Evaluasi</div>
-   </div>
+                    <div class="title-row">
+                        <div>
+                            <h1>Dokumen Kualifikasi Peserta</h1>
+                            <p>Pilih peserta untuk membuka Dokumen Kualifikasi individual atau bandingkan Profiling beberapa peserta.</p>
+                        </div>
+                        <button class="btn" onclick="go('entry2')">← Kembali ke Detail Evaluasi</button>
+                    </div>
 
-   <section class="card">
-     <div class="card-head">
-       <div>
-         <h2>Hasil Evaluasi Peserta</h2>
-         <p>Pilih 2–5 peserta untuk dibandingkan Profiling Penyedianya.</p>
-       </div>
-     </div>
+                    <div class="notice">
+                        <strong>Entry Point Profiling Penyedia</strong>
+                        Klik <b>Detail</b> untuk membuka Dokumen Kualifikasi + Profiling Summary peserta.
+                        Untuk comparison, pilih minimal 2 dan maksimal 5 peserta lalu klik <b>Bandingkan Profiling Penyedia</b>.
+                    </div>
 
-     <div class="card-body">
-       <div class="selection-bar">
-         <div class="left">
-           <span class="selection-count" id="compareSelectionCount">0 peserta dipilih</span>
-           <span class="sub">Minimal 2, maksimal 5 peserta</span>
-         </div>
-         <button id="compareSelectedBtn" class="btn primary" disabled onclick="openSelectedComparison()">Bandingkan Profiling Penyedia</button>
-       </div>
+                    <section class="card">
+                        <div class="card-head">
+                            <div>
+                                <h2>Daftar Peserta</h2>
+                                <p>Daftar peserta pada paket yang dapat dilihat Data Kualifikasinya oleh Pokja.</p>
+                            </div>
+                        </div>
 
-       <div class="table-wrap">
-         <table>
-           <thead>
-             <tr>
-               <th style="width:42px">Pilih</th>
-               <th>No</th>
-               <th>Nama Peserta</th>
-               <th>Harga Penawaran</th>
-               <th>Harga Terkoreksi</th>
-               <th>A</th><th>K</th><th>T</th><th>H</th><th>B</th>
-             </tr>
-           </thead>
-           <tbody>
-             ${peserta
-                 .map(
-                     (p, i) => `
-               <tr>
-                 <td><input class="compare-checkbox pokja-compare-check" type="checkbox" value="${i}" onchange="updatePokjaComparisonSelection()"></td>
-                 <td>${i + 1}</td>
-                 <td><button class="btn link" onclick="go('pokja-eligible')">${p[0]}</button></td>
-                 <td>${p[1]}</td>
-                 <td>${p[2]}</td>
-                 <td>${p[3]}</td><td>${p[4]}</td><td>${p[5]}</td><td>${p[6]}</td><td>${p[7]}</td>
-               </tr>`
-                 )
-                 .join("")}
-           </tbody>
-         </table>
-       </div>
+                        <div class="card-body">
+                            <div class="selection-bar">
+                                <div class="left">
+                                    <span class="selection-count" id="qualificationCompareSelectionCount">0 peserta dipilih</span>
+                                    <span class="sub">Minimal 2, maksimal 5 peserta</span>
+                                </div>
+                                <button
+                                    id="qualificationCompareBtn"
+                                    class="btn primary"
+                                    disabled
+                                    onclick="openQualificationComparison()"
+                                >
+                                    Bandingkan Profiling Penyedia
+                                </button>
+                            </div>
 
-       <div class="sub" style="margin-top:8px">
-         Klik nama peserta untuk membuka Dokumen Kualifikasi + Profiling individual. Gunakan checkbox untuk membandingkan beberapa peserta.
-       </div>
-     </div>
-   </section>
- </div>`;
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style="width:42px">Pilih</th>
+                                            <th>No</th>
+                                            <th>Nama Peserta</th>
+                                            <th>Penyedia OAP</th>
+                                            <th>Lokasi Penyedia</th>
+                                            <th>Status Data Kualifikasi</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${peserta.map((p,i)=>`
+                                            <tr>
+                                                <td>
+                                                    <input
+                                                        class="compare-checkbox qualification-compare-check"
+                                                        type="checkbox"
+                                                        value="${i}"
+                                                        onchange="updateQualificationComparisonSelection()"
+                                                    >
+                                                </td>
+                                                <td>${i+1}</td>
+                                                <td><b>${p[0]}</b></td>
+                                                <td>${p[1]}</td>
+                                                <td>${p[2]}</td>
+                                                <td><span class="badge green">${p[3]}</span></td>
+                                                <td>
+                                                    <button class="btn" onclick="go('pokja-eligible')">
+                                                        Detail
+                                                    </button>
+                                                </td>
+                                            </tr>`).join("")}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="sub" style="margin-top:8px">
+                                Tombol Detail membuka Dokumen Kualifikasi individual. Checkbox hanya digunakan untuk comparison Profiling Penyedia.
+                            </div>
+                        </div>
+                    </section>
+                </div>`;
             }
+
+            function updateQualificationComparisonSelection() {
+                const checks = [...document.querySelectorAll(".qualification-compare-check")];
+                const selected = checks.filter((x) => x.checked);
+                const count = selected.length;
+
+                const label = document.querySelector("#qualificationCompareSelectionCount");
+                const button = document.querySelector("#qualificationCompareBtn");
+
+                if (label) label.textContent = `${count} peserta dipilih`;
+                if (button) button.disabled = count < 2 || count > 5;
+
+                checks.forEach((x) => {
+                    if (!x.checked) x.disabled = count >= 5;
+                });
+
+                if (count < 5) {
+                    checks.forEach((x) => (x.disabled = false));
+                }
+            }
+
+            function openQualificationComparison() {
+                const selected = [...document.querySelectorAll(".qualification-compare-check:checked")];
+                if (selected.length < 2 || selected.length > 5) return;
+                go("compare");
+            }
+
+            window.updateQualificationComparisonSelection = updateQualificationComparisonSelection;
+            window.openQualificationComparison = openQualificationComparison;
 
             function updatePokjaComparisonSelection() {
                 const checks = [...document.querySelectorAll(".pokja-compare-check")];
@@ -1188,60 +1924,38 @@
             window.openSelectedComparison = openSelectedComparison;
 
             function ppkEntryPage() {
-                headerTitle("Paris Yolanda", "PPK");
+                headerTitle("Paris Yolanda", "PPK · SPPBJ");
                 return `<div class="shell">
-   <div class="breadcrumb">Beranda <span>›</span> Informasi Tender</div>
-   <div style="display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:18px">
-     <div style="padding:10px 0;color:#667085">Informasi Tender</div>
-     <div style="padding:10px 0;color:#667085">Pertanyaan & Penjelasan</div>
-     <div style="padding:10px 0;color:#667085">Penawaran Peserta</div>
-     <div style="padding:10px 0;font-weight:800;border-bottom:3px solid var(--red)">Evaluasi</div>
-     <div style="padding:10px 0;color:#667085">Sanggahan</div>
-   </div>
+                    <div class="breadcrumb">Beranda <span>›</span> Informasi Tender <span>›</span> SPPBJ</div>
 
-   <section class="card">
-    <div class="card-head"><div><h2>Evaluasi [QA-IRMA] Tender autocreate</h2></div></div>
-    <div class="card-body">
-      <div class="notice"><strong>Informasi</strong>PPK hanya membuka profil penyedia pemenang/calon pemenang pada tahap yang diperbolehkan. Fitur perbandingan tidak tersedia untuk PPK.</div>
-      <div style="display:grid;grid-template-columns:180px 1fr;gap:8px 18px;margin-bottom:14px">
-        <strong>Kode Tender</strong><span>01KVCACJ83XBRGSBT5S79K47NE</span>
-        <strong>Nama Paket</strong><span>[QA-IRMA] Tender autocreate</span>
-        <strong>Nilai HPS</strong><span>Rp. 920.000.000,00</span>
-        <strong>Nilai Pagu</strong><span>Rp. 989.217.000,00</span>
-      </div>
+                    <div class="title-row">
+                        <div>
+                            <h1>Surat Penunjukan Penyedia Barang/Jasa</h1>
+                            <p>[QA-IRMA] Tender autocreate</p>
+                        </div>
+                    </div>
 
-      <div class="table-wrap">
-       <table>
-        <thead><tr><th>No</th><th>Nama Peserta</th><th>Harga Penawaran</th><th>Harga Terkoreksi</th><th>A</th><th>K</th><th>T</th><th>H</th><th>B</th><th>P</th></tr></thead>
-        <tbody>
-         <tr>
-          <td>1</td>
-          <td><button class="btn link" onclick="go('ppk-eligible')">ASURANSI SINAR MAS</button></td>
-          <td>Rp. 880.000.000,00</td><td>Rp. 880.000.000,00</td>
-          <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>☆</td>
-         </tr>
-         <tr>
-          <td>2</td>
-          <td><button class="btn link" onclick="go('ppk-eligible')">KIRAI ABADI JAYA</button></td>
-          <td>Rp. 919.000.000,00</td><td>Rp. 919.000.000,00</td>
-          <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td></td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
-      <div class="sub" style="margin-top:8px">A Evaluasi Administrasi · K Evaluasi Kualifikasi · T Evaluasi Teknis · H Evaluasi Harga/Biaya · B Pembuktian Kualifikasi · P Pemenang</div>
-    </div>
-   </section>
+                    <section class="card">
+                        <div class="card-head"><div><h2>Penyedia Pemenang</h2><p>PPK hanya memiliki akses ke penyedia pemenang pada tahap SPPBJ.</p></div></div>
+                        <div class="card-body">
+                            <div style="display:grid;grid-template-columns:220px 1fr;gap:10px 18px">
+                                <strong>Nama Penyedia</strong><span>ASURANSI SINAR MAS</span>
+                                <strong>Harga Terkoreksi</strong><span>Rp. 880.000.000,00</span>
+                                <strong>Status</strong><span><span class="badge green">Pemenang</span></span>
+                                <strong>Data Kualifikasi</strong>
+                                <span><button class="btn primary" onclick="go('ppk-eligible')">Dokumen Kualifikasi</button></span>
+                            </div>
 
-   <section class="card">
-    <div class="card-head"><h2>Status Persetujuan</h2></div>
-    <div class="card-body"><div class="table-wrap"><table><thead><tr><th>Anggota Pokja Pemilihan</th><th>Status</th><th>Tanggal</th><th>Alasan Tidak Setuju</th></tr></thead>
-    <tbody><tr><td>Najwa Yuliarti</td><td>✓</td><td>16 Agustus 2026 03:06</td><td></td></tr>
-    <tr><td>Agus Iswahyudi</td><td>✓</td><td>16 Agustus 2026 03:10</td><td></td></tr>
-    <tr><td>Zelaya Susanti</td><td>✓</td><td>16 Agustus 2026 03:12</td><td></td></tr></tbody></table></div></div>
-   </section>
- </div>`;
+                            <div class="notice" style="margin-top:14px;margin-bottom:0">
+                                <strong>Entry Point PPK</strong>
+                                PPK dapat membuka Dokumen Kualifikasi + Profiling Penyedia untuk pemenang. Fitur perbandingan tidak tersedia untuk PPK.
+                            </div>
+                        </div>
+                    </section>
+                </div>`;
             }
+
+
             function printPage() {
                 headerTitle("Pokja Pemilihan", "Cetak Dokumen Kualifikasi");
                 return `<div class="print-sheet">
@@ -1251,8 +1965,8 @@
  <h2>Tenaga Ahli</h2><div class="table-wrap"><table><thead><tr><th>Nama</th><th>Kewarganegaraan</th><th>Jabatan</th><th>Status Pegawai</th><th>Pengalaman Kerja</th><th>Profesi/Keahlian</th></tr></thead><tbody>${experts.map((x) => `<tr><td>${x[0]}</td><td>${x[1]}</td><td>${x[2]}</td><td>${x[3]}</td><td>${x[4]}</td><td>${x[5]}</td></tr>`).join("")}</tbody></table></div>
  <div class="match-alert"><div class="icon">×</div><div><ul><li>Terdapat kesamaan data Nama: <b>Yusran</b>, NPWP pada <b>SOLUSI UTAMA KONSULTAN</b></li><li>Terdapat kesamaan data Nama: <b>Yusran</b>, NPWP pada <b>PERUSAHAAN PERSEROAN (PERSERO) PT. ADHI KARYA</b></li></ul></div></div>
  <h2>Pengalaman Pekerjaan yang Disubmit</h2>${experienceTable(completed.slice(0, 3))}
- <h2>Profiling Penyedia — Pengalaman Selesai 10 Tahun</h2>${experienceTable(completed.slice(0, 5))}<p>5 data terbaru ditampilkan. Detail lengkap tersedia di VMS.</p>
- <h2>Profiling Penyedia — Pekerjaan Berjalan (Semua)</h2>${experienceTable(runningAll.slice(0, 5))}<p>5 data terbaru ditampilkan. Detail lengkap tersedia di VMS.</p>
+ <h2>Profiling Penyedia — Pengalaman Selesai 10 Tahun</h2><p>Ringkasan: 7 pengalaman selesai dalam periode Profiling. Detail lengkap tersedia di VMS.</p>
+ <h2>Profiling Penyedia — Pekerjaan Berjalan (Semua)</h2><p>Ringkasan: 7 pekerjaan berjalan. Detail lengkap tersedia di VMS.</p>
  <h2>Profiling Penyedia — Pekerjaan Berpotensi Berkontrak</h2>${experienceTable(potentialContracts.slice(0, 10))}<p>Menampilkan maksimal 10 data pada halaman cetak.</p>
  <h2>Profiling Penyedia — Riwayat Daftar Hitam</h2><p>Detail tersedia pada Daftar Hitam INAPROC. Tautan cetak tidak memuat halaman eksternal.</p>
  <h2>Profiling Penyedia — Rata-rata Penilaian Kinerja 4 Tahun</h2><p>Detail tersedia pada halaman Riwayat Penilaian Penyedia. URL TBD.</p>
@@ -1424,6 +2138,10 @@
                     document.querySelector("#app").innerHTML = comparePage();
                     return;
                 }
+                if (view === "pokja-list") {
+                    document.querySelector("#app").innerHTML = pokjaParticipantListPage();
+                    return;
+                }
                 if (view === "entry2") {
                     document.querySelector("#app").innerHTML = entryPoint2();
                     return;
@@ -1452,8 +2170,8 @@
             window.redirect = redirect;
             window.redirectBlacklist = redirectBlacklist;
             document.querySelectorAll(".pbtn").forEach((b) => (b.onclick = () => go(b.dataset.s)));
-            window.onpopstate = () => render(location.hash.slice(1) || "entry2");
-            render(location.hash.slice(1) || "entry2");
+            window.onpopstate = () => render(location.hash.slice(1)||"pokja-list");
+            render(location.hash.slice(1)||"pokja-list");
         </script>
     </body>
 </html>
